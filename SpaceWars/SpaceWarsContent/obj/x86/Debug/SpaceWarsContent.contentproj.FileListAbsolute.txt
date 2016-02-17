@@ -1,0 +1,1 @@
+C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWarsContent\obj\x86\Debug\SpaceWarsContent.contentprojResolveAssemblyReference.cache
