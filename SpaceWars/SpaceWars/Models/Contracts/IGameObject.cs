@@ -3,6 +3,8 @@
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework;
 
+    using SpaceWars.Core.Managers;
+
     public interface IGameObject : IControl
     {
 

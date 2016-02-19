@@ -6,6 +6,8 @@
     using ScreenManagement;
     using Microsoft.Xna.Framework.Input;
 
+    using SpaceWars.Core.Managers;
+
     public class MainScreen : GameScreen
     {
         Starfield bakcground = new Starfield();

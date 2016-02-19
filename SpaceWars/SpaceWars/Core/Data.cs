@@ -6,8 +6,6 @@
     using System.Linq;
     using System.Text;
     using Microsoft.Xna.Framework.Graphics;
-    using SpaceWars.GameObjects;
-    using SpaceWars.Interfaces;
 
     public static class Data
     {
@@ -15,17 +13,43 @@
         private static string path = "Core/highscore.txt";
         private static SpriteBatch spriteBatch;
 
-     
+
         //public static Stringer OutputWriter { get; set; }
         public static ICollection<int> Score { get; set; }
-                
+
         public static void AddScore(int score)
         {
-            StreamWriter writer = new StreamWriter(path, true);
-            using (writer)
+            bool scoreExists = false;
+            string[] readText = File.ReadAllLines(path);
+
+            using (StreamReader reader = new StreamReader(path))
+            {
+                int smallestResult = 0;
+                int index = 0;
+
+                for (int i = 0; i < readText.Length; i++)
+                {
+                    if (int.Parse(readText[i]) < smallestResult)
+                    {
+                        smallestResult = int.Parse(readText[i]);
+                        index = i;
+                    }
+                }
+
+                if (score > smallestResult)
+                {
+                    readText[index] = score.ToString();
+                }
+            }
+
+
+            using (StreamWriter writer = new StreamWriter(path, true))
             {
                 writer.WriteLine("{0}", score);
             }
+
+
+
         }
 
         //this method loads all the scores from a file to a List, it is called internally in PrintScores method
@@ -51,12 +75,12 @@
             StringBuilder output = new StringBuilder();
             if (Score.Any())
             {
-                var sortedScores = Score.OrderByDescending(x => x).Take(5);
-                
+                var sortedScores = Score.OrderByDescending(x => x).Take(10);
+
                 int index = 1;
-                foreach (int score in sortedScores)
+                foreach (int score in sortedScores.Distinct())
                 {
-                    output.AppendFormat("{0,2}.{1,6}{2}", index,  score, Environment.NewLine);
+                    output.AppendFormat("{0,2}.{1,6}{2}", index, score, Environment.NewLine);
                     index++;
                 }
             }

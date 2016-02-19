@@ -9,6 +9,8 @@ using System.Text;
 
 namespace SpaceWars.Core
 {
+    using SpaceWars.Core.Managers;
+
     public class Stats
     {
         public Stringer HealthText { get; set; }

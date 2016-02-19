@@ -2,6 +2,8 @@
 {
     using Microsoft.Xna.Framework;
 
+    using SpaceWars.Core.Managers;
+
     interface IBullet
     {
 

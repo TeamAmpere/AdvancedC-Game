@@ -1,6 +1,10 @@
-﻿namespace SpaceWars
+﻿namespace SpaceWars.Core.Managers
 {
     using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq.Expressions;
 
     public class ScoreManager
     {
@@ -8,7 +12,7 @@
 
         public ScoreManager()
         {
-            this.TotalScore = totalScore;
+            this.TotalScore = this.totalScore;
         }
         
         public int TotalScore

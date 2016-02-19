@@ -64,6 +64,7 @@
     <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.GamerServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Storage, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Xml" />
@@ -74,9 +75,9 @@
   <ItemGroup>
     <Compile Include="Core\Data.cs" />
     <Compile Include="Core\Engine.cs" />
-    <Compile Include="Core\ObjectManager.cs" />
-    <Compile Include="Core\ResourceManager.cs" />
-    <Compile Include="Core\ScoreManager.cs" />
+    <Compile Include="Core\Managers\ObjectManager.cs" />
+    <Compile Include="Core\Managers\ResourceManager.cs" />
+    <Compile Include="Core\Managers\ScoreManager.cs" />
     <Compile Include="Core\Stats.cs" />
     <Compile Include="Models\Asteroids\Asteroid.cs" />
     <Compile Include="Models\Asteroids\ChunkyAsteroid.cs" />
@@ -126,7 +127,9 @@
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </Content>
     <Content Include="Loads\GameOverScreen.xml" />
-    <Content Include="Loads\HighscoreScreen.xml" />
+    <Content Include="Loads\HighscoreScreen.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Loads\InstructionsScreen.xml" />
     <Content Include="Loads\MainScreen.xml" />
     <Content Include="Loads\SplashScreen.xml" />

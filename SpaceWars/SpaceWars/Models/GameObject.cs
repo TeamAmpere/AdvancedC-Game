@@ -4,6 +4,8 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
+    using SpaceWars.Core.Managers;
+
     public abstract class GameObject : IGameObject
     {
 

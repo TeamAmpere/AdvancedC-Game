@@ -1,7 +1,9 @@
 ﻿namespace SpaceWars.Model.Enemies.EnemyBullets
 {
     using Microsoft.Xna.Framework;
-   
+
+    using SpaceWars.Core.Managers;
+
     public class BigEnemyBullet : EnemyBullet
     {
         private static readonly Vector2 DOWN = new Vector2(0, +10);

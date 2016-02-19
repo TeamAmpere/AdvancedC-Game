@@ -7,7 +7,7 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\Content\scorefont.xnb</Output>
+      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\scorefont.xnb</Output>
       <Time>2016-02-17T21:38:38.1039349+02:00</Time>
     </Item>
     <Item>
@@ -16,7 +16,7 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\Content\spritefont.xnb</Output>
+      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\spritefont.xnb</Output>
       <Time>2016-02-17T21:38:38.1149355+02:00</Time>
     </Item>
     <Item>
@@ -25,7 +25,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\Content\asteroid.xnb</Output>
+      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\asteroid.xnb</Output>
       <Time>2016-02-17T21:38:38.0639326+02:00</Time>
     </Item>
     <Item>
@@ -34,7 +34,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\Content\bigEnemy.xnb</Output>
+      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\bigEnemy.xnb</Output>
       <Time>2016-02-17T21:38:38.0679329+02:00</Time>
     </Item>
     <Item>
@@ -43,7 +43,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\Content\bigEnemyBullet.xnb</Output>
+      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\bigEnemyBullet.xnb</Output>
       <Time>2016-02-17T21:38:38.0729331+02:00</Time>
     </Item>
     <Item>
@@ -52,7 +52,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\Content\chunky.xnb</Output>
+      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\chunky.xnb</Output>
       <Time>2016-02-17T21:38:38.0759333+02:00</Time>
     </Item>
     <Item>
@@ -61,7 +61,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\Content\Gameover.xnb</Output>
+      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\Gameover.xnb</Output>
       <Time>2016-02-17T21:38:38.0809336+02:00</Time>
     </Item>
     <Item>
@@ -70,7 +70,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\Content\HealthBonus.xnb</Output>
+      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\HealthBonus.xnb</Output>
       <Time>2016-02-17T21:38:38.0839338+02:00</Time>
     </Item>
     <Item>
@@ -79,7 +79,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\Content\Highscore.xnb</Output>
+      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\Highscore.xnb</Output>
       <Time>2016-02-17T21:38:38.0869339+02:00</Time>
     </Item>
     <Item>
@@ -88,7 +88,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\Content\Instructions.xnb</Output>
+      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\Instructions.xnb</Output>
       <Time>2016-02-17T21:38:38.0909342+02:00</Time>
     </Item>
     <Item>
@@ -97,7 +97,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\Content\laser.xnb</Output>
+      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\laser.xnb</Output>
       <Time>2016-02-17T21:38:38.0949344+02:00</Time>
     </Item>
     <Item>
@@ -106,7 +106,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\Content\littleEnemy.xnb</Output>
+      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\littleEnemy.xnb</Output>
       <Time>2016-02-17T21:38:38.0969345+02:00</Time>
     </Item>
     <Item>
@@ -115,7 +115,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\Content\redfart.xnb</Output>
+      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\redfart.xnb</Output>
       <Time>2016-02-17T21:38:38.0999347+02:00</Time>
     </Item>
     <Item>
@@ -124,7 +124,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\Content\rocky.xnb</Output>
+      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\rocky.xnb</Output>
       <Time>2016-02-17T21:38:38.1019348+02:00</Time>
     </Item>
     <Item>
@@ -133,7 +133,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\Content\ShieldBonus.xnb</Output>
+      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\ShieldBonus.xnb</Output>
       <Time>2016-02-17T21:38:38.105935+02:00</Time>
     </Item>
     <Item>
@@ -142,7 +142,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\Content\ship.xnb</Output>
+      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\ship.xnb</Output>
       <Time>2016-02-17T21:38:38.1079351+02:00</Time>
     </Item>
     <Item>
@@ -151,7 +151,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\Content\smallEnemyBullet.xnb</Output>
+      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\smallEnemyBullet.xnb</Output>
       <Time>2016-02-17T21:38:38.1109353+02:00</Time>
     </Item>
     <Item>
@@ -160,7 +160,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\Content\space.xnb</Output>
+      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\space.xnb</Output>
       <Time>2016-02-17T21:38:38.1129354+02:00</Time>
     </Item>
     <Item>
@@ -169,7 +169,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\Content\startBackground.xnb</Output>
+      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\startBackground.xnb</Output>
       <Time>2016-02-17T21:38:38.1169357+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
@@ -179,10 +179,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWarsContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWarsV2\SpaceWars\SpaceWars\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWarsContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

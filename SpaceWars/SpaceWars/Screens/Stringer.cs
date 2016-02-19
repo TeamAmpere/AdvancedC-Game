@@ -3,6 +3,8 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Content;
     using Microsoft.Xna.Framework.Graphics;
+
+    using SpaceWars.Core.Managers;
     using SpaceWars.Model;
 
     public class Stringer 

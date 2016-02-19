@@ -7,6 +7,8 @@
     using Microsoft.Xna.Framework.Input;
     using Microsoft.Xna.Framework;
 
+    using SpaceWars.Core.Managers;
+
     public class GameOverScreen : GameScreen
     {
         Starfield background = new Starfield();

@@ -9,6 +9,7 @@
     {
         Starfield Background = new Starfield();
         Image Image = new Image("startBackground");
+        private int buttonDelay = 10;
 
         public override void LoadContent(Microsoft.Xna.Framework.Content.ContentManager Content)
         {
@@ -33,23 +34,35 @@
             //Controls
             KeyboardState keyboard = Keyboard.GetState();
 
-            if (keyboard.IsKeyDown(Keys.Escape))
+            if (buttonDelay == 0)
             {
-                ScreenManager.Instance.Engine.Exit();
+                if (keyboard.IsKeyDown(Keys.Escape))
+                {
+                    ScreenManager.Instance.Engine.Exit();
+                }
+
+
+                if (keyboard.IsKeyDown(Keys.Enter))
+                {
+                    ScreenManager.Instance.ChangeScreen("MainScreen");
+                }
+
+                if (keyboard.IsKeyDown(Keys.I))
+                {
+                    ScreenManager.Instance.ChangeScreen("InstructionsScreen");
+                }
+
+                else if (keyboard.IsKeyDown(Keys.H))
+                {
+                    ScreenManager.Instance.ChangeScreen("HighscoreScreen");
+                }
             }
-            else if (keyboard.IsKeyDown(Keys.Enter))
+
+            else
             {
-                ScreenManager.Instance.ChangeScreen("MainScreen");
+                buttonDelay--;
             }
-            else if (keyboard.IsKeyDown(Keys.I))
-            {
-                ScreenManager.Instance.ChangeScreen("InstructionsScreen");
-            }
-            else if (keyboard.IsKeyDown(Keys.H))
-            {
-                ScreenManager.Instance.ChangeScreen("HighscoreScreen");
-            }
-            
+
             base.Update(gameTime);
         }
 

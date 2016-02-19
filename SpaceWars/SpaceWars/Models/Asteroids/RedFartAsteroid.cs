@@ -3,6 +3,8 @@
     using Microsoft.Xna.Framework;
     using System;
 
+    using SpaceWars.Core.Managers;
+
     class RedFartAsteroid : Asteroid
     {
         private new const int TextureWidth = 42;

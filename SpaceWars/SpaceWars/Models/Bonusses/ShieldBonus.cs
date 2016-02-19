@@ -2,6 +2,8 @@
 {
     using System;
     using Microsoft.Xna.Framework;
+
+    using SpaceWars.Core.Managers;
     using SpaceWars.GameObjects;
     using SpaceWars.Interfaces;
 

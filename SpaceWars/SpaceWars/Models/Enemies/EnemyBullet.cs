@@ -3,7 +3,8 @@
     using SpaceWars.GameObjects;
     using SpaceWars.Interfaces;
     using Microsoft.Xna.Framework;
-    
+
+    using SpaceWars.Core.Managers;
 
     public abstract class EnemyBullet : GameObject, IBullet
     {

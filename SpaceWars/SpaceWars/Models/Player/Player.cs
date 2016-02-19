@@ -8,6 +8,7 @@
     using SpaceWars;
     using SpaceWars.Screens.ScreenManagement;
 using SpaceWars.Core;
+    using SpaceWars.Core.Managers;
 
     public class Player: GameObject, IDestructibleObject, IPlayer
     {

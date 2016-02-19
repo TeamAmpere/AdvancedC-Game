@@ -1,4 +1,4 @@
-﻿namespace SpaceWars
+﻿namespace SpaceWars.Core.Managers
 {
     using System;
     using System.Collections.Generic;

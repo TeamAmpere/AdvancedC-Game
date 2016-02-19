@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 using SpaceWars.Core;
@@ -16,6 +12,7 @@ namespace SpaceWars.Screens
         Starfield background = new Starfield();
         Image highScoreStats = new Image("Highscore");
         Stringer highscoreWriter = new Stringer(new Vector2(300, 300));
+        private int buttonDelay = 10;
 
         public override void LoadContent(ContentManager Content)
         {
@@ -43,9 +40,10 @@ namespace SpaceWars.Screens
             {
                 ScreenManager.Instance.Engine.Exit();
             }
+
             if (keyboard.IsKeyDown(Keys.Enter))
             {
-                ScreenManager.Instance.ChangeScreen("MainScreen");
+                ScreenManager.Instance.ChangeScreen("SplashScreen");
             }
       
             background.Update(gameTime);
