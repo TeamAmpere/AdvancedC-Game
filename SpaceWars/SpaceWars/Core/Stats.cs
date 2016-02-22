@@ -16,6 +16,7 @@ namespace SpaceWars.Core
         public Stringer HealthText { get; set; }
         public Stringer ShieldText { get; set; }
         public Stringer ScoreText { get; set; }
+        public Stringer Level { get; set; }
 
         public Player Player { get; private set; }
 
@@ -25,6 +26,8 @@ namespace SpaceWars.Core
             this.HealthText = new Stringer(new Vector2(50, 100));
             this.ShieldText = new Stringer(new Vector2(200, 100));
             this.ScoreText = new Stringer(new Vector2(650, 100));
+            this.Level = new Stringer(new Vector2(550,100));
+
         }
 
         public void LoadContent(ResourceManager resourceManager)
@@ -32,6 +35,7 @@ namespace SpaceWars.Core
             HealthText.LoadContent(resourceManager);
             ShieldText.LoadContent(resourceManager);
             ScoreText.LoadContent(resourceManager);
+            Level.LoadContent(resourceManager);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -39,6 +43,7 @@ namespace SpaceWars.Core
             HealthText.Draw(spriteBatch);
             ShieldText.Draw(spriteBatch);
             ScoreText.Draw(spriteBatch);
+            Level.Draw(spriteBatch);
         }
         
     }

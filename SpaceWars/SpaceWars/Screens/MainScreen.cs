@@ -47,7 +47,7 @@
             //    ScreenManager.Instance.ChangeScreen("HighscoreScreen");
             //}
 
-            objectManager.Update(gameTime);
+            objectManager.Update(gameTime,this.player);
             bakcground.Update(gameTime);
             base.Update(gameTime);
         }

@@ -78,12 +78,20 @@ using SpaceWars.Core;
             }
         }
 
+        public int Level
+        {
+            get
+            {
+                return this.Owner.scoreManager.TotalScore / 100;
+            }
+        }
 
         public override void LoadContent(ResourceManager resourceManager)
         {
             Stats.HealthText.Text = "Health: " + this.Health;
             Stats.ShieldText.Text = "Shield: " + this.Shield;
             Stats.ScoreText.Text = "Score: " + Owner.scoreManager.TotalScore;
+            Stats.Level.Text = "Level: " + this.Level;
             Stats.LoadContent(resourceManager);
             //DONT REMOVE THIS
             //HealthText.Text = "Health: " + this.Health;
@@ -101,7 +109,7 @@ using SpaceWars.Core;
             Stats.HealthText.Text =  "Health: " + this.Health;
             Stats.ShieldText.Text = "Shield: " + this.Shield;
             Stats.ScoreText.Text = "Score: " + Owner.scoreManager.TotalScore;
-
+            Stats.Level.Text = "Level: " + this.Level;
 
 
 

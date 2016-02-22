@@ -12,7 +12,7 @@
     using SpaceWars.GameObjects;
     using SpaceWars.Model.Bonuses;
     using SpaceWars.Core;
-   
+
 
     public class ObjectManager
     {
@@ -41,8 +41,8 @@
 
         public bool RemoveObject(IGameObject obj)
         {
-           obj.NeedToRemove = true;
-           return true; 
+            obj.NeedToRemove = true;
+            return true;
         }
 
         bool RemoveObjectPrivate(IGameObject obj)
@@ -50,9 +50,9 @@
             return objects.Remove(obj);
         }
 
-        public void Update(GameTime gametime)
+        public void Update(GameTime gametime, IPlayer player)
         {
-            Think(gametime);
+            Think(gametime, player);
             Move();
             CheckCollision();
             RemoveGarbage();
@@ -92,18 +92,18 @@
             }
         }
 
-        public void Think(GameTime gametime)
+        public void Think(GameTime gametime, IPlayer player)
         {
-            CreateAsteroidField(gametime);
+            CreateAsteroidField(gametime, player);
 
             DropBonus(gametime);
 
-            DropEnemy(gametime);
+            DropEnemy(gametime, player);
 
             for (int i = 0; i < objects.Count; ++i)
             {
                 objects[i].Think(gametime);
-            }  
+            }
         }
 
         public void LoadContent(Microsoft.Xna.Framework.Content.ContentManager content)
@@ -111,31 +111,75 @@
             ResourceMgr.LoadContent(content);
         }
 
-        void CreateAsteroidField(GameTime gametime)
+        void CreateAsteroidField(GameTime gametime, IPlayer player)
         {
             elapsedAsteroidTime += gametime.ElapsedGameTime.Milliseconds;
 
             if (elapsedAsteroidTime > AsteroidFieldPeriod)
             {
                 elapsedAsteroidTime = 0;
-                var asteroid = GetAsteroid();
+                var asteroid = GetAsteroid(player);
                 AddObject(asteroid);
             }
         }
 
-        private Asteroid GetAsteroid()
+        private Asteroid GetAsteroid(IPlayer player)
         {
             Random randomAsteroid = new Random();
             int index = randomAsteroid.Next(0, 3);
-            switch (index)
+
+            switch (player.Level)
             {
                 case 0:
-                    return new ChunkyAsteroid();
+                    switch (index)
+                    {
+                        case 0:
+                            return new ChunkyAsteroid();
+                        case 1:
+                            return new RockyAsteroid();
+                        case 2:
+                            return new RedFartAsteroid();
+                    }
+                    break;
+
                 case 1:
-                    return new RockyAsteroid();
-                case 2:
-                    return new RedFartAsteroid();
+                    switch (index)
+                    {
+                        case 0:
+                            var asteroid = new ChunkyAsteroid();
+                            asteroid.Speed += new Vector2(2, 2);
+                            return asteroid;
+
+                        case 1:
+                            var rockyAsteroid = new RockyAsteroid();
+                            rockyAsteroid.Speed += new Vector2(2, 2);
+                            return rockyAsteroid;
+                        case 2:
+                            var redFartAsteroid = new RedFartAsteroid();
+                            redFartAsteroid.Speed += new Vector2(2, 2);
+                            return redFartAsteroid;
+                    }
+                    break;
+                default:
+                    switch (index)
+                    {
+                        case 0:
+                            var asteroid = new ChunkyAsteroid();
+                            asteroid.Speed += new Vector2(4, 4);
+                            return asteroid;
+
+                        case 1:
+                            var rockyAsteroid = new RockyAsteroid();
+                            rockyAsteroid.Speed += new Vector2(4, 4);
+                            return rockyAsteroid;
+                        case 2:
+                            var redFartAsteroid = new RedFartAsteroid();
+                            redFartAsteroid.Speed += new Vector2(4, 4);
+                            return redFartAsteroid;
+                    }
+                    break;
             }
+
             return null;
         }
 
@@ -158,7 +202,7 @@
                 Random rand = new Random(gametime.TotalGameTime.Seconds);
                 int choice = rand.Next(0, 5);
 
-                switch(choice)
+                switch (choice)
                 {
                     case 0:
                         AddObject(new HealthBonus());
@@ -170,11 +214,11 @@
                         // There is no bonus for you ... sorry
                         break;
                 }
-                
+
             }
         }
 
-        void DropEnemy(GameTime gametime)
+        void DropEnemy(GameTime gametime, IPlayer player)
         {
             elapsedEnemyTime += gametime.ElapsedGameTime.Milliseconds;
 
@@ -184,19 +228,27 @@
                 Random rand = new Random(gametime.TotalGameTime.Seconds);
                 int choice = rand.Next(0, 2);
 
-                switch (choice)
+                switch (player.Level)
                 {
-                    case 0:
-                        AddObject(new BigEnemy());
-                        break;
                     case 1:
                         AddObject(new LittleEnemy());
                         break;
-                    default:
-                        // There is no bonus for you ... sorry
+                    case 2:
+                        switch (choice)
+                        {
+                            case 0:
+                                AddObject(new BigEnemy());
+                                break;
+                            case 1:
+                                AddObject(new LittleEnemy());
+                                break;
+                            default:
+                                // There is no bonus for you ... sorry
+                                break;
+                        }
                         break;
+                    //TODO: case 3: THEBOSS!!
                 }
-
             }
         }
 
