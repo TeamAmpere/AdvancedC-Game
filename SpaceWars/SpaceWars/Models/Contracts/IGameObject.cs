@@ -24,7 +24,6 @@
 
         void Intersect(IGameObject obj);
 
-
         void Draw(SpriteBatch spriteBatch);
 
         void LoadContent(ResourceManager resourceManager);

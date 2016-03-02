@@ -6,7 +6,7 @@
     using SpaceWars.Core.Managers;
     using SpaceWars.GameObjects;
     using SpaceWars.Interfaces;
-    using SpaceWars.Model.Enemies.EnemyBullets;
+    using SpaceWars.Models.Bullets;
 
     public class BigEnemy: Enemy
     {
@@ -14,12 +14,12 @@
         private const int RightCorner = 800 - 100; // Screen width - health bonus width
         private const int DownCorner = 950 - 279; // Screen height - health bonus height
         private const int LeftCorner = 0;
-        private const int ShootDelayConst = 40;
+        private readonly int ShootDelayConst;
+        private int shootDelay;
         private const int scoringPoints = 3;
-        private int shootDelay = 0;
 
 
-        public BigEnemy()
+        public BigEnemy(int shootDelayConst)
         {
             Random rand = new Random();
 
@@ -27,6 +27,8 @@
             this.Speed = new Vector2(0, 2);
 
             this.BoundingBox = new Rectangle((int)Position.X, (int)Position.Y, 100, 131);
+            this.ShootDelayConst = shootDelayConst;
+            this.shootDelay = shootDelayConst;
         }
 
         public override void OnGetEnemy(IGameObject obj)
@@ -43,16 +45,15 @@
 
         public override void Shoot()
         {
-            if (shootDelay > 0)
+            if (this.shootDelay > 0)
             {
-                shootDelay--;
+                this.shootDelay--;
             }
             else
             {
                 int bulletX = (int)this.Position.X + 22; //22 because half of the texture width - bullet width
                 Owner.AddObject(new BigEnemyBullet(new Vector2(bulletX, this.Position.Y)));
-
-                shootDelay = ShootDelayConst;
+                this.shootDelay = this.ShootDelayConst;
             }
         }
 

@@ -1,10 +1,11 @@
-﻿namespace SpaceWars.Model.Enemies.EnemyBullets
+﻿namespace SpaceWars.Models.Bullets
 {
-    using SpaceWars.GameObjects;
-    using SpaceWars.Interfaces;
     using Microsoft.Xna.Framework;
 
     using SpaceWars.Core.Managers;
+    using SpaceWars.GameObjects;
+    using SpaceWars.Interfaces;
+    using SpaceWars.Model;
 
     public abstract class EnemyBullet : GameObject, IBullet
     {
@@ -18,9 +19,9 @@
         protected EnemyBullet(Vector2 position, Vector2 speed, int damage)
         {
             this.Damage = damage;
-            Speed = speed;
-            Position = position;
-            BoundingBox = new Rectangle((int)position.X,(int)position.Y, 64, 64);
+            this.Speed = speed;
+            this.Position = position;
+            this.BoundingBox = new Rectangle((int)position.X,(int)position.Y, 64, 64);
         }
 
         public int Damage { get; protected set; }
@@ -30,31 +31,31 @@
             if (obj is Player)
             {
                 var player = (Player)obj;
-                player.TakeDMG(Damage);
-                Owner.RemoveObject(this);
+                player.TakeDMG(this.Damage);
+                this.Owner.RemoveObject(this);
             }
         }
 
         public override void LoadContent(ResourceManager resourceManager)
         {
-            Texture = resourceManager.GetResource("laser");
+            this.Texture = resourceManager.GetResource("laser");
         }
 
         public override void Think(GameTime gameTime)
         {
             bool needToRemove = false;
 
-            if (Position.X < LeftCorner)
+            if (this.Position.X < LeftCorner)
                 needToRemove = true;
-            if (Position.X > RightCorner)
+            if (this.Position.X > RightCorner)
                 needToRemove = true;
-            if (Position.Y > DownCorner)
+            if (this.Position.Y > DownCorner)
                 needToRemove = true;
-            if (Position.Y < UpCorner)
+            if (this.Position.Y < -130)
                 needToRemove = true;
 
             if (needToRemove)
-                Owner.RemoveObject(this);
+                this.Owner.RemoveObject(this);
         }
 
     }

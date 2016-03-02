@@ -2,41 +2,51 @@
 {
     using System;
     using System.Collections.Generic;
+
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    using SpaceWars.Interfaces;
-
-    using SpaceWars.Model;
-    using SpaceWars.GameObjects.AsteroidsPack;
     using SpaceWars.GameObjects;
+    using SpaceWars.Interfaces;
+    using SpaceWars.Model;
     using SpaceWars.Model.Bonuses;
-    using SpaceWars.Core;
-
+    using SpaceWars.Models.Enemies.Bosses;
 
     public class ObjectManager
     {
-        private readonly List<IGameObject> objects = new List<IGameObject>();
-        private int elapsedAsteroidTime = 0;
         private const int AsteroidFieldPeriod = 80;
-        private int elapsedBonusTime = 0;
-        private const int BonusPeriod = 3750;
-        private int elapsedEnemyTime = 0;
-        private const int EnemyPeriod = 4000;
-        public ScoreManager scoreManager = new ScoreManager();
-        public ResourceManager ResourceMgr { get; set; }
 
+        private const int BonusPeriod = 3750;
+
+        private const int EnemyPeriod = 4000;
+
+        private readonly List<IGameObject> objects = new List<IGameObject>();
+
+        private int elapsedAsteroidTime;
+
+        private int elapsedBonusTime;
+
+        private int elapsedEnemyTime;
+
+        private bool IsPurpleEnemy;
+
+        public ScoreManager scoreManager = new ScoreManager();
 
         public ObjectManager()
         {
-            ResourceMgr = new ResourceManager();
+            this.ResourceMgr = new ResourceManager();
         }
+
+        public ResourceManager ResourceMgr { get; set; }
 
         public void AddObject(IGameObject obj)
         {
-            obj.Owner = this;
-            obj.LoadContent(ResourceMgr);
-            objects.Add(obj);
+            if (obj != null)
+            {
+                obj.Owner = this;
+                obj.LoadContent(this.ResourceMgr);
+                this.objects.Add(obj);
+            }
         }
 
         public bool RemoveObject(IGameObject obj)
@@ -47,20 +57,20 @@
 
         bool RemoveObjectPrivate(IGameObject obj)
         {
-            return objects.Remove(obj);
+            return this.objects.Remove(obj);
         }
 
         public void Update(GameTime gametime, IPlayer player)
         {
-            Think(gametime, player);
-            Move();
-            CheckCollision();
-            RemoveGarbage();
+            this.Think(gametime, player);
+            this.Move();
+            this.CheckCollision();
+            this.RemoveGarbage();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var obj in objects)
+            foreach (var obj in this.objects)
             {
                 obj.Draw(spriteBatch);
             }
@@ -68,11 +78,11 @@
 
         public void CheckCollision()
         {
-            foreach (var firstObject in objects)
+            foreach (var firstObject in this.objects)
             {
-                foreach (var secondObject in objects)
+                foreach (var secondObject in this.objects)
                 {
-                    if (!Object.ReferenceEquals(firstObject, secondObject))
+                    if (!ReferenceEquals(firstObject, secondObject))
                     {
                         if (firstObject.BoundingBox.Intersects(secondObject.BoundingBox))
                         {
@@ -83,10 +93,9 @@
             }
         }
 
-
         public void Move()
         {
-            foreach (var obj in objects)
+            foreach (var obj in this.objects)
             {
                 obj.Move();
             }
@@ -94,173 +103,127 @@
 
         public void Think(GameTime gametime, IPlayer player)
         {
-            CreateAsteroidField(gametime, player);
+            this.CreateAsteroidField(gametime, player);
 
-            DropBonus(gametime);
+            this.DropBonus(gametime);
 
-            DropEnemy(gametime, player);
+            this.DropEnemy(gametime, player);
 
-            for (int i = 0; i < objects.Count; ++i)
+            for (int i = 0; i < this.objects.Count; ++i)
             {
-                objects[i].Think(gametime);
+                this.objects[i].Think(gametime);
             }
         }
 
         public void LoadContent(Microsoft.Xna.Framework.Content.ContentManager content)
         {
-            ResourceMgr.LoadContent(content);
+            this.ResourceMgr.LoadContent(content);
         }
 
         void CreateAsteroidField(GameTime gametime, IPlayer player)
         {
-            elapsedAsteroidTime += gametime.ElapsedGameTime.Milliseconds;
+            this.elapsedAsteroidTime += gametime.ElapsedGameTime.Milliseconds;
 
-            if (elapsedAsteroidTime > AsteroidFieldPeriod)
+            if (this.elapsedAsteroidTime > AsteroidFieldPeriod)
             {
-                elapsedAsteroidTime = 0;
-                var asteroid = GetAsteroid(player);
-                AddObject(asteroid);
+                this.elapsedAsteroidTime = 0;
+                AsteroidManager asteroidManager = new AsteroidManager();
+                var asteroid = asteroidManager.CreateASteroid(player);
+                this.AddObject(asteroid);
             }
         }
-
-        private Asteroid GetAsteroid(IPlayer player)
-        {
-            Random randomAsteroid = new Random();
-            int index = randomAsteroid.Next(0, 3);
-
-            switch (player.Level)
-            {
-                case 0:
-                    switch (index)
-                    {
-                        case 0:
-                            return new ChunkyAsteroid();
-                        case 1:
-                            return new RockyAsteroid();
-                        case 2:
-                            return new RedFartAsteroid();
-                    }
-                    break;
-
-                case 1:
-                    switch (index)
-                    {
-                        case 0:
-                            var asteroid = new ChunkyAsteroid();
-                            asteroid.Speed += new Vector2(2, 2);
-                            return asteroid;
-
-                        case 1:
-                            var rockyAsteroid = new RockyAsteroid();
-                            rockyAsteroid.Speed += new Vector2(2, 2);
-                            return rockyAsteroid;
-                        case 2:
-                            var redFartAsteroid = new RedFartAsteroid();
-                            redFartAsteroid.Speed += new Vector2(2, 2);
-                            return redFartAsteroid;
-                    }
-                    break;
-                default:
-                    switch (index)
-                    {
-                        case 0:
-                            var asteroid = new ChunkyAsteroid();
-                            asteroid.Speed += new Vector2(4, 4);
-                            return asteroid;
-
-                        case 1:
-                            var rockyAsteroid = new RockyAsteroid();
-                            rockyAsteroid.Speed += new Vector2(4, 4);
-                            return rockyAsteroid;
-                        case 2:
-                            var redFartAsteroid = new RedFartAsteroid();
-                            redFartAsteroid.Speed += new Vector2(4, 4);
-                            return redFartAsteroid;
-                    }
-                    break;
-            }
-
-            return null;
-        }
-
 
         public List<IGameObject> GetEnemyBullet()
         {
-            var bulletList = objects.FindAll(b => b.GetType() == typeof(Bullet));
+            var bulletList = this.objects.FindAll(b => b.GetType() == typeof(Bullet));
             return bulletList;
-
         }
-
 
         void DropBonus(GameTime gametime)
         {
-            elapsedBonusTime += gametime.ElapsedGameTime.Milliseconds;
+            this.elapsedBonusTime += gametime.ElapsedGameTime.Milliseconds;
 
-            if (elapsedBonusTime > BonusPeriod)
+            if (this.elapsedBonusTime > BonusPeriod)
             {
-                elapsedBonusTime = 0;
+                this.elapsedBonusTime = 0;
                 Random rand = new Random(gametime.TotalGameTime.Seconds);
                 int choice = rand.Next(0, 5);
 
                 switch (choice)
                 {
                     case 0:
-                        AddObject(new HealthBonus());
+                        this.AddObject(new HealthBonus());
                         break;
                     case 1:
-                        AddObject(new ShieldBonus());
+                        this.AddObject(new ShieldBonus());
                         break;
                     default:
                         // There is no bonus for you ... sorry
                         break;
                 }
-
             }
         }
 
         void DropEnemy(GameTime gametime, IPlayer player)
         {
-            elapsedEnemyTime += gametime.ElapsedGameTime.Milliseconds;
+            this.elapsedEnemyTime += gametime.ElapsedGameTime.Milliseconds;
 
-            if (elapsedEnemyTime > EnemyPeriod)
+            if (this.elapsedEnemyTime > EnemyPeriod)
             {
-                elapsedEnemyTime = 0;
+                this.elapsedEnemyTime = 0;
                 Random rand = new Random(gametime.TotalGameTime.Seconds);
                 int choice = rand.Next(0, 2);
 
                 switch (player.Level)
                 {
+                    case 0:
+                        break;
                     case 1:
-                        AddObject(new LittleEnemy());
+                        this.AddObject(new LittleEnemy(50));
                         break;
                     case 2:
                         switch (choice)
                         {
                             case 0:
-                                AddObject(new BigEnemy());
+                                this.AddObject(new BigEnemy(40));
                                 break;
                             case 1:
-                                AddObject(new LittleEnemy());
-                                break;
-                            default:
-                                // There is no bonus for you ... sorry
+                                this.AddObject(new LittleEnemy(40));
                                 break;
                         }
                         break;
-                    //TODO: case 3: THEBOSS!!
+                    case 3:
+                        if (!this.IsPurpleEnemy)
+                        {
+                            this.IsPurpleEnemy = true;
+                            this.AddObject(new PurpleAlien(30));
+                        }
+
+                        break;
+                    default:
+                        switch (choice)
+                        {
+                            case 0:
+                                this.AddObject(new BigEnemy(30));
+                                break;
+                            case 1:
+                                this.AddObject(new LittleEnemy(30));
+                                break;
+                        }
+                        break;
                 }
             }
         }
 
-
         void RemoveGarbage()
         {
-            for (int i = objects.Count - 1; i >= 0; i--)
+            for (int i = this.objects.Count - 1; i >= 0; i--)
             {
-                if (objects[i].NeedToRemove)
-                    RemoveObjectPrivate(objects[i]);
+                if (this.objects[i].NeedToRemove)
+                {
+                    this.RemoveObjectPrivate(this.objects[i]);
+                }
             }
         }
-
     }
 }

@@ -24,6 +24,8 @@
             this.resources["littleEnemy"] = content.Load<Texture2D>("littleEnemy");
             this.resources["smallEnemyBullet"] = content.Load<Texture2D>("smallEnemyBullet");
             this.resources["bigEnemyBullet"] = content.Load<Texture2D>("bigEnemyBullet");
+            this.resources["alienRocket"] = content.Load<Texture2D>("alienRocket");
+            this.resources["purpleAlien"] = content.Load<Texture2D>("purpleAlien");
 
             this.fontResources["spritefont"] = content.Load<SpriteFont>("spritefont");
             this.fontResources["scorefont"] = content.Load<SpriteFont>("scorefont");

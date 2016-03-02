@@ -8,8 +8,6 @@
 
     public abstract class GameObject : IGameObject
     {
-
-
         private Vector2 position;
         private Vector2 speed;
         private Texture2D texture;

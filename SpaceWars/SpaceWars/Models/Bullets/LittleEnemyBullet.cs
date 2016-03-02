@@ -1,22 +1,23 @@
-﻿namespace SpaceWars.Model.Enemies.EnemyBullets
+﻿namespace SpaceWars.Models.Bullets
 {
     using Microsoft.Xna.Framework;
 
     using SpaceWars.Core.Managers;
 
-    public class BigEnemyBullet : EnemyBullet
+    public class LittleEnemyBullet : EnemyBullet
     {
         private static readonly Vector2 DOWN = new Vector2(0, +10);
-        private new const int Damage = 50;
+        private new const int Damage = 30;
 
-        public BigEnemyBullet(Vector2 position)
+        public LittleEnemyBullet(Vector2 position)
             : base(position, DOWN, Damage)
         {
         }
 
         public override void LoadContent(ResourceManager resourceManager)
         {
-            Texture = resourceManager.GetResource("bigEnemyBullet");
+            Texture = resourceManager.GetResource("smallEnemyBullet");
         }
+
     }
 }

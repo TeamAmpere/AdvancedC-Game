@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="Core\Data.cs" />
     <Compile Include="Core\Engine.cs" />
+    <Compile Include="Core\Managers\AsteroidManager.cs" />
     <Compile Include="Core\Managers\ObjectManager.cs" />
     <Compile Include="Core\Managers\ResourceManager.cs" />
     <Compile Include="Core\Managers\ScoreManager.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Models\Bonusses\Bonus.cs" />
     <Compile Include="Models\Bonusses\HealthBonus.cs" />
     <Compile Include="Models\Bonusses\ShieldBonus.cs" />
+    <Compile Include="Models\Bullets\AlienRocket.cs" />
     <Compile Include="Models\Contracts\IAsteroid.cs" />
     <Compile Include="Models\Contracts\IBonus.cs" />
     <Compile Include="Models\Contracts\IBullet.cs" />
@@ -97,11 +99,12 @@
     <Compile Include="Models\Contracts\IGiveScore.cs" />
     <Compile Include="Models\Contracts\IPlayer.cs" />
     <Compile Include="Models\Enemies\BigEnemy.cs" />
-    <Compile Include="Models\Enemies\BigEnemyBullet.cs" />
+    <Compile Include="Models\Bullets\BigEnemyBullet.cs" />
+    <Compile Include="Models\Enemies\Bosses\PurpleAlien.cs" />
     <Compile Include="Models\Enemies\Enemy.cs" />
-    <Compile Include="Models\Enemies\EnemyBullet.cs" />
+    <Compile Include="Models\Bullets\EnemyBullet.cs" />
     <Compile Include="Models\Enemies\LittleEnemy.cs" />
-    <Compile Include="Models\Enemies\LittleEnemyBullet.cs" />
+    <Compile Include="Models\Bullets\LittleEnemyBullet.cs" />
     <Compile Include="Models\GameObject.cs" />
     <Compile Include="Models\Player\Bullet.cs" />
     <Compile Include="Models\Player\Player.cs" />
@@ -157,6 +160,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--
