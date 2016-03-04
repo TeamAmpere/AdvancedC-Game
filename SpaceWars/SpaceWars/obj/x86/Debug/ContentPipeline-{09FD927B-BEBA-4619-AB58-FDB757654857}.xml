@@ -199,6 +199,15 @@
       <Output>D:\Lichni\Dimi\Softuni\Fundamentals\CSharpAdvanced\Teamwork\AdvancedC-Game\SpaceWars\SpaceWars\Content\explosion3.xnb</Output>
       <Time>2016-03-04T21:16:52.8961678+02:00</Time>
     </Item>
+    <Item>
+      <Source>HealthBar.png</Source>
+      <Name>HealthBar</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Lichni\Dimi\Softuni\Fundamentals\CSharpAdvanced\Teamwork\AdvancedC-Game\SpaceWars\SpaceWars\Content\HealthBar.xnb</Output>
+      <Time>2016-03-04T22:17:51.483427+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{09FD927B-BEBA-4619-AB58-FDB757654857}</ContentProjectGUID>

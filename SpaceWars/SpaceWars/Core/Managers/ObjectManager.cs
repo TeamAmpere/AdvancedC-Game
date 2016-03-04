@@ -149,8 +149,8 @@
             {
                 this.elapsedAsteroidTime = 0;
                 AsteroidManager asteroidManager = new AsteroidManager();
-                var asteroid = asteroidManager.CreateASteroid(player);
-                this.AddObject(asteroid);
+                //var asteroid = asteroidManager.CreateASteroid(player);
+                //this.AddObject(asteroid);
             }
         }
 
@@ -197,8 +197,8 @@
 
                 switch (player.Level)
                 {
-                    case 0:
-                        break;
+                    //case 0:
+                    //    break;
                     case 1:
                         this.AddObject(new LittleEnemy(50));
                         break;
@@ -213,7 +213,7 @@
                                 break;
                         }
                         break;
-                    case 3:
+                    case 0:
                         if (!this.IsPurpleEnemy)
                         {
                             this.IsPurpleEnemy = true;

@@ -23,8 +23,9 @@
         private int health = 100;
         private int changePossitionDelay = 20;
         private int shooted = 10;
-        private Stringer Health;
+        private Texture2D helthTexture;
 
+        private Rectangle rectangle;
         private int angryCount = 80;
 
         public PurpleAlien(int shootDelayConst)
@@ -32,8 +33,7 @@
             Random rand = new Random();
 
             this.Position = new Vector2(rand.Next(LeftCorner, RightCorner), -50);
-            this.Speed = new Vector2(0, 0);
-            this.Health = new Stringer(new Vector2(50, 50));
+            this.Speed = new Vector2(0, 0);   
             this.BoundingBox = new Rectangle((int)this.Position.X, (int)this.Position.Y, 100, 50);
             this.ShootDelayConst = shootDelayConst;
             this.shootDelay = shootDelayConst;
@@ -69,8 +69,8 @@
 
         public override void Think(GameTime gameTime)
         {
-            this.Health.Text = "Enemy health: " + this.health;
-           this.Shoot();
+            this.rectangle = new Rectangle(50,50,this.health,20);
+         this.Shoot();
             if (this.changePossitionDelay < 0)
             {
                 Random rand = new Random();
@@ -108,15 +108,14 @@
         public override void LoadContent(ResourceManager resourceManager)
         {
             this.Texture = resourceManager.GetResource("purpleAlien");
-            this.Health.Text = "Enemy health: " + this.health;
-            this.Health.Color = Color.DarkRed;
-            this.Health.LoadContent(resourceManager);
-        }
+            this.helthTexture = resourceManager.GetResource("healthBar");
+            }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-            this.Health.Draw(spriteBatch);
+            spriteBatch.Draw(helthTexture, this.rectangle,Color.White);
+          
         }
     }
 }

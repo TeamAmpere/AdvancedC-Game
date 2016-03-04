@@ -27,7 +27,7 @@
             this.resources["alienRocket"] = content.Load<Texture2D>("alienRocket");
             this.resources["purpleAlien"] = content.Load<Texture2D>("purpleAlien");
             this.resources["explosion3"] = content.Load<Texture2D>("explosion3");
-
+            this.resources["healthBar"] = content.Load<Texture2D>("HealthBar");
             this.fontResources["spritefont"] = content.Load<SpriteFont>("spritefont");
             this.fontResources["scorefont"] = content.Load<SpriteFont>("scorefont");
 
