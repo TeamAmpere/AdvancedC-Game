@@ -3,6 +3,7 @@
     using System;
 
     using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
 
     using SpaceWars.Core.Managers;
     using SpaceWars.GameObjects;
@@ -18,8 +19,13 @@
         private const int LeftCorner = 0;
         private readonly int ShootDelayConst;
         private int shootDelay;
-        private const int scoringPoints = 3;
+        private const int scoringPoints = 0;
+        private int health = 100;
+        private int changePossitionDelay = 20;
+        private int shooted = 10;
+        private Stringer Health; 
 
+        private int angryCount = 80;
 
         public PurpleAlien(int shootDelayConst)
         {
@@ -27,16 +33,18 @@
 
             this.Position = new Vector2(rand.Next(LeftCorner, RightCorner), -50);
             this.Speed = new Vector2(0, 0);
-
+            this.Health = new Stringer(new Vector2(50, 50));
             this.BoundingBox = new Rectangle((int)this.Position.X, (int)this.Position.Y, 100, 50);
             this.ShootDelayConst = shootDelayConst;
             this.shootDelay = shootDelayConst;
+            this.ScoringPoints = scoringPoints;
         }
 
         public override void OnGetEnemy(IGameObject obj)
         {
             if (obj.GetType() == typeof(Player))
             {
+
                 Player player = (Player)obj;
 
                 player.TakeDMG(+100);
@@ -59,14 +67,56 @@
             }
         }
 
+        public override void Think(GameTime gameTime)
+        {
+            this.Health.Text = "Enemy health: " + this.health;
+            this.Shoot();
+            if (this.changePossitionDelay < 0)
+            {
+                Random rand = new Random();
+                this.Position = new Vector2(rand.Next(LeftCorner, RightCorner), -50);
+                this.changePossitionDelay = 20;
+            }
+            this.changePossitionDelay--;
+
+            if (this.health < 50)
+            {
+                this.shootDelay = 0;
+            }
+        }
+
+        public override void Intersect(IGameObject obj)
+        {
+            OnGetEnemy(obj);
+            if (obj.GetType() == typeof(Bullet))
+            {
+                this.shooted--;
+                if (this.shooted < 0)
+                {
+                    this.health -= 2;
+                    this.shooted = 10;
+                }
+               
+                if (this.health <= 0)
+                {
+                    this.NeedToRemove = true;
+                    this.ScoringPoints = 100;
+                }
+            }
+        }
+
         public override void LoadContent(ResourceManager resourceManager)
         {
             this.Texture = resourceManager.GetResource("purpleAlien");
+            this.Health.Text = "Enemy health: " + this.health;
+            this.Health.Color = Color.DarkRed;
+            this.Health.LoadContent(resourceManager);
         }
 
-        public override void Think(GameTime gameTime)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            this.Shoot();
+            base.Draw(spriteBatch);
+            this.Health.Draw(spriteBatch);
         }
     }
 }
