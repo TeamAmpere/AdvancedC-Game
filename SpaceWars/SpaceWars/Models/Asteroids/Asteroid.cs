@@ -88,7 +88,6 @@
             origin.Y = TextureHeight / 2f;
         }
 
-
         private void Rotate(GameTime gameTime)
         {
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -102,6 +101,5 @@
             spriteBatch.Draw(Texture, Position, null, Color.White, rotationAngle, origin, 1.0f, SpriteEffects.None, 0f);
         }
 
-        
     }       
 }

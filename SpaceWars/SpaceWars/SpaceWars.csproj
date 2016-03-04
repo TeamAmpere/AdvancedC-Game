@@ -73,6 +73,7 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animations\Explosion.cs" />
     <Compile Include="Core\Data.cs" />
     <Compile Include="Core\Engine.cs" />
     <Compile Include="Core\Managers\AsteroidManager.cs" />

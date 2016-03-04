@@ -4,6 +4,7 @@
     using System;
 
     using SpaceWars.Core.Managers;
+    using SpaceWars.Interfaces;
 
     class ChunkyAsteroid : Asteroid
     {

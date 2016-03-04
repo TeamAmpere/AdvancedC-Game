@@ -97,3 +97,4 @@ D:\Lichni\Dimi\Softuni\Fundamentals\CSharpAdvanced\Teamwork\AdvancedC-Game\Space
 D:\Lichni\Dimi\Softuni\Fundamentals\CSharpAdvanced\Teamwork\AdvancedC-Game\SpaceWars\SpaceWars\SpaceWars.pdb
 C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\alienRocket.xnb
 C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\purpleAlien.xnb
+C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\explosion3.xnb

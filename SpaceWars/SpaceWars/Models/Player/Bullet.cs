@@ -1,9 +1,13 @@
 ﻿namespace SpaceWars.GameObjects
 {
+    using System.Linq.Expressions;
+
     using SpaceWars.Interfaces;
     using SpaceWars.Model;
     using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
 
+    //using SpaceWars.Animations;
     using SpaceWars.Core.Managers;
 
     public class Bullet: GameObject, IBullet
@@ -17,7 +21,8 @@
         private const int RightCorner = 800;
         private const int UpCorner = 0;
         private const int DownCorner = 950;
-        
+
+        private Texture2D ExplosionTexture;
 
         public Bullet(Vector2 position)
         {
@@ -36,6 +41,8 @@
             if (obj is IAsteroid)
             {
                 var asteroid = (Asteroid)obj;
+                Owner.AddObject(new Explosion(this.ExplosionTexture, new Vector2(asteroid.Position.X, asteroid.Position.Y)));
+                //Explosion explosion = new Explosion(this.ExplosionTexture, new Vector2(asteroid.Position.X, asteroid.Position.Y));
                 Owner.RemoveObject(asteroid);
                 Owner.RemoveObject(this);
             }
@@ -45,6 +52,7 @@
         public override void LoadContent(ResourceManager resourceManager)
         {
             Texture = resourceManager.GetResource("laser");
+            this.ExplosionTexture = resourceManager.GetResource("explosion3");
         }
 
         public override void Think(GameTime gameTime)

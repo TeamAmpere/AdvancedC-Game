@@ -190,6 +190,15 @@
       <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\purpleAlien.xnb</Output>
       <Time>2016-03-02T22:02:57.5244014+02:00</Time>
     </Item>
+    <Item>
+      <Source>explosion3.png</Source>
+      <Name>explosion3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\explosion3.xnb</Output>
+      <Time>2016-03-04T20:46:03.7052623+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{09FD927B-BEBA-4619-AB58-FDB757654857}</ContentProjectGUID>

@@ -32,6 +32,8 @@
 
         public ScoreManager scoreManager = new ScoreManager();
 
+        private List<Explosion> explosions = new List<Explosion>(); 
+
         public ObjectManager()
         {
             this.ResourceMgr = new ResourceManager();
@@ -43,9 +45,18 @@
         {
             if (obj != null)
             {
-                obj.Owner = this;
-                obj.LoadContent(this.ResourceMgr);
-                this.objects.Add(obj);
+                if (obj.GetType() != typeof(Explosion))
+                {
+                    obj.Owner = this;
+                    obj.LoadContent(this.ResourceMgr);
+                    this.objects.Add(obj);
+                }
+
+                else
+                {
+                    this.explosions.Add((Explosion)obj);
+                }
+                
             }
         }
 
@@ -70,6 +81,11 @@
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            foreach (Explosion explosion in this.explosions)
+            {
+                explosion.Draw(spriteBatch);
+            }
+
             foreach (var obj in this.objects)
             {
                 obj.Draw(spriteBatch);
@@ -112,6 +128,11 @@
             for (int i = 0; i < this.objects.Count; ++i)
             {
                 this.objects[i].Think(gametime);
+            }
+
+            foreach (Explosion explosion in this.explosions)
+            {
+                explosion.Think(gametime);
             }
         }
 
@@ -222,6 +243,14 @@
                 if (this.objects[i].NeedToRemove)
                 {
                     this.RemoveObjectPrivate(this.objects[i]);
+                }
+            }
+
+            for (int i = this.explosions.Count - 1; i >= 0; i--)
+            {
+                if (this.explosions[i].NeedToRemove)
+                {
+                    this.explosions.Remove(this.explosions[i]);
                 }
             }
         }
