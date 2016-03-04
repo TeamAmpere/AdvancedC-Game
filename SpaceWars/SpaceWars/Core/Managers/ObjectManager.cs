@@ -179,7 +179,6 @@
                         this.AddObject(new ShieldBonus());
                         break;
                     default:
-                        // There is no bonus for you ... sorry
                         break;
                 }
             }
