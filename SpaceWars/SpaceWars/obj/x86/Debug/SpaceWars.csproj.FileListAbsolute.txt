@@ -98,3 +98,6 @@ D:\Lichni\Dimi\Softuni\Fundamentals\CSharpAdvanced\Teamwork\AdvancedC-Game\Space
 C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\alienRocket.xnb
 C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\purpleAlien.xnb
 C:\Users\Alex\Desktop\Alex\SoftUni\AdvancedCSharpTeamworkRepository\AdvancedC-Game\SpaceWars\SpaceWars\Content\explosion3.xnb
+D:\Lichni\Dimi\Softuni\Fundamentals\CSharpAdvanced\Teamwork\AdvancedC-Game\SpaceWars\SpaceWars\Content\alienRocket.xnb
+D:\Lichni\Dimi\Softuni\Fundamentals\CSharpAdvanced\Teamwork\AdvancedC-Game\SpaceWars\SpaceWars\Content\purpleAlien.xnb
+D:\Lichni\Dimi\Softuni\Fundamentals\CSharpAdvanced\Teamwork\AdvancedC-Game\SpaceWars\SpaceWars\Content\explosion3.xnb
