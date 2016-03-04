@@ -38,7 +38,14 @@
 
                 if (score > smallestResult)
                 {
-                    readText[index] = score.ToString();
+                    if (readText.Length > 0)
+                    {
+                        readText[index] = score.ToString();
+                    }
+                    else
+                    {
+                        File.WriteAllLines(path, new string[] { score.ToString()});
+                    }
                 }
             }
 
