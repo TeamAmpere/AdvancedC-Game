@@ -14,6 +14,8 @@
         Player player = new Player();
         ObjectManager objectManager = new ObjectManager();
 
+        private bool pause = false;
+
         public override void LoadContent(Microsoft.Xna.Framework.Content.ContentManager Content)
         {
             bakcground.LoadContent(Content);
@@ -42,14 +44,34 @@
 
                 //ScreenManager.Instance.ChangeScreen("InstructionsScreen");
             }
+
             //if (keyboard.IsKeyDown(Keys.H))
             //{
             //    ScreenManager.Instance.ChangeScreen("HighscoreScreen");
             //}
 
-            objectManager.Update(gameTime,this.player);
-            bakcground.Update(gameTime);
-            base.Update(gameTime);
+            if (!pause)
+            {
+
+                if (keyboard.IsKeyDown(Keys.P))
+                {
+                    this.pause = true;
+                }
+                else
+                {
+                    objectManager.Update(gameTime, this.player);
+                    bakcground.Update(gameTime);
+                    base.Update(gameTime);
+                }
+
+            }
+            else
+            {
+                if (keyboard.IsKeyDown(Keys.Enter))
+                {
+                    this.pause = false;
+                }
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
