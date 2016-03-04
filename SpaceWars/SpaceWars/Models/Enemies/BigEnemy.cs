@@ -29,7 +29,6 @@
             this.BoundingBox = new Rectangle((int)Position.X, (int)Position.Y, 100, 131);
             this.ShootDelayConst = shootDelayConst;
             this.shootDelay = shootDelayConst;
-            this.ScoringPoints = scoringPoints;
         }
 
         public override void OnGetEnemy(IGameObject obj)

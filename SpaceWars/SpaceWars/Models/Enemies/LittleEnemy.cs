@@ -29,7 +29,6 @@
             this.BoundingBox = new Rectangle((int)Position.X, (int)Position.Y, 100, 69);
             this.ShootDelayConst = shootDelay;
             this.shootDelay = this.ShootDelayConst;
-            this.ScoringPoints = scoringPoints;
 
         }
 
