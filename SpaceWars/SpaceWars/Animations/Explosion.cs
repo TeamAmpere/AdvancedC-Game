@@ -44,7 +44,7 @@
             if (this.Timer > this.interval)
             {
                 this.currentFrame++;
-                this.Timer = 0f;
+                this.Timer = 0.0f;
             }
 
             if (this.currentFrame == 17)
