@@ -20,7 +20,7 @@ namespace SpaceWars.Core.Managers
 
             switch (player.Level)
             {
-                case 0:
+                case 2:
                     switch (index)
                     {
                         case 0:
