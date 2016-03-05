@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceWars", "SpaceWars\SpaceWars\SpaceWars.csproj", "{8E330059-794F-45C3-B0D4-E22C197975C7}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "SpaceWarsContent", "SpaceWars\SpaceWarsContent\SpaceWarsContent.contentproj", "{09FD927B-BEBA-4619-AB58-FDB757654857}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceWarsContent", "SpaceWars\SpaceWarsContent\SpaceWarsContent.contentproj", "{09FD927B-BEBA-4619-AB58-FDB757654857}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

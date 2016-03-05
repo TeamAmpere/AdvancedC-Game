@@ -13,22 +13,21 @@ namespace SpaceWars.Core
 
     public class Stats
     {
+        public Stats(Player player)
+        {
+            this.Player = player;
+            this.HealthText = new Stringer(new Vector2(375, 920));
+            this.ShieldText = new Stringer(new Vector2(375, 890));
+            this.ScoreText = new Stringer(new Vector2(650, 100));
+            this.Level = new Stringer(new Vector2(550, 100));
+        }
+
         public Stringer HealthText { get; set; }
         public Stringer ShieldText { get; set; }
         public Stringer ScoreText { get; set; }
         public Stringer Level { get; set; }
 
         public Player Player { get; private set; }
-
-        public Stats(Player player)
-        {
-            this.Player = player;
-            this.HealthText = new Stringer(new Vector2(50, 100));
-            this.ShieldText = new Stringer(new Vector2(200, 100));
-            this.ScoreText = new Stringer(new Vector2(650, 100));
-            this.Level = new Stringer(new Vector2(550,100));
-
-        }
 
         public void LoadContent(ResourceManager resourceManager)
         {

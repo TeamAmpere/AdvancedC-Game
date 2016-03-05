@@ -14,7 +14,7 @@
 
         public Image(string imageName)
         {
-            this.imageName = imageName;
+            this.imageName = "screens/" + imageName;
         }
 
         public void LoadConent(ContentManager Content)

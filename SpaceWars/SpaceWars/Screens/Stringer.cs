@@ -5,14 +5,10 @@
     using Microsoft.Xna.Framework.Graphics;
 
     using SpaceWars.Core.Managers;
-    using SpaceWars.Model;
 
-    public class Stringer 
+    public class Stringer
     {
         private SpriteFont spriteFont;
-        private Vector2 Position { get; set; }
-        public string Text { get; set; }
-        public Color Color { get; set; }
 
         public Stringer(Vector2 position)
         {
@@ -20,24 +16,30 @@
             this.Color = Color.White;
         }
 
+        private Vector2 Position { get; }
+
+        public string Text { get; set; }
+
+        public Color Color { get; set; }
+
         public void LoadContent(ResourceManager resourceManager)
         {
-            spriteFont = resourceManager.GetSpriteFont("spritefont");
+            this.spriteFont = resourceManager.GetSpriteFont("spritefont");
         }
 
         public void LoadContent(ContentManager Content)
         {
-            spriteFont = Content.Load<SpriteFont>("spritefont");
+            this.spriteFont = Content.Load<SpriteFont>("spritefont");
         }
 
         public void ScoreLoadContent(ContentManager Content)
         {
-            spriteFont = Content.Load<SpriteFont>("scorefont");
+            this.spriteFont = Content.Load<SpriteFont>("sprites/scorefont");
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(spriteFont, Text, Position, Color);
+            spriteBatch.DrawString(this.spriteFont, this.Text, this.Position, this.Color);
         }
     }
 }

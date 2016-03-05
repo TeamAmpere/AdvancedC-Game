@@ -1,60 +1,90 @@
 ﻿namespace SpaceWars.GameObjects
 {
     using Microsoft.Xna.Framework;
-    using SpaceWars.Interfaces;
-    using SpaceWars.Model;
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;
-    using SpaceWars;
-    using SpaceWars.Screens.ScreenManagement;
-using SpaceWars.Core;
-    using SpaceWars.Core.Managers;
 
-    public class Player: GameObject, IDestructibleObject, IPlayer
+    using SpaceWars.Core;
+    using SpaceWars.Core.Managers;
+    using SpaceWars.Interfaces;
+    using SpaceWars.Model;
+    using SpaceWars.Screens.ScreenManagement;
+
+    public class Player : GameObject, IDestructibleObject, IPlayer
     {
-        private static readonly Vector2 UP = new Vector2(0, -10);
-        private static readonly Vector2 DOWN = new Vector2(0, 10);
-        private static readonly Vector2 LEFT = new Vector2(-10,0);
-        private static readonly Vector2 RIGHT = new Vector2(10,0);
-        private static readonly Vector2 ZERO = new Vector2(0, 0);
         private const int LeftCorner = 0;
+
         private const int RightCorner = 800 - 64; // Screen width - ship width
+
         private const int UpCorner = 0;
+
         private const int DownCorner = 950 - 64; // Screen height - ship height
+
         private const int ShootInterval = 120;
+
         public const int MinHealth = 0;
 
-        private Vector2 upTemp;
+        private const int MaxShield = 100;
+
+        private static readonly Vector2 UP = new Vector2(0, -10);
+
+        private static readonly Vector2 DOWN = new Vector2(0, 10);
+
+        private static readonly Vector2 LEFT = new Vector2(-10, 0);
+
+        private static readonly Vector2 RIGHT = new Vector2(10, 0);
+
+        private static readonly Vector2 ZERO = new Vector2(0, 0);
+
         private Vector2 downTemp;
-        private Vector2 leftTemp;
-        private Vector2 rightTemp;
+
+        private int elapsedShootTime;
+
         private int health;
+
+        private Texture2D shieldBar;
+
+        private Texture2D healthBar;
+
+        private Rectangle healthRectangle;
+
+        private Rectangle shieldRectangle;
+
+        private Vector2 healthBarPosition;
+
+        private Vector2 shieldBarPosition;
+
+        private Vector2 leftTemp;
+
+        private Vector2 rightTemp;
+
         private int shield;
 
-        private int elapsedShootTime = 0;
-        private const int MaxShield = 100;
+        private Vector2 upTemp;
+
+        public Player()
+        {
+            //Texture = null;
+            this.Position = new Vector2(350, 890);
+            this.BoundingBox = new Rectangle(350, 890, 64, 64);
+            this.Speed = new Vector2(0, 0);
+            this.Health = 100;
+            this.Shield = 0;
+            this.Stats = new Stats(this);
+        }
 
         //private Stringer HealthText = new Stringer(new Vector2(300, 200));
         //private Stringer ShieldText = new Stringer(new Vector2(150, 200));
         //private Stringer ScoreText = new Stringer(new Vector2(450, 200));
 
         public Stats Stats { get; set; }
-        
-        public Player()
-        {
-            //Texture = null;
-            Position = new Vector2(350, 890);
-            this.BoundingBox = new Rectangle(350, 890, 64, 64);
-            Speed = new Vector2(0,0);
-          
-            Health = 100;
-            Shield = 0;
-            this.Stats = new Stats(this);
-        }
 
         public int Health
         {
-            get { return this.health; }
+            get
+            {
+                return this.health;
+            }
             set
             {
                 if (value < MinHealth)
@@ -65,9 +95,47 @@ using SpaceWars.Core;
             }
         }
 
+        public void TakeDMG(int dmg)
+        {
+            int remainingDamage;
+
+            if (this.Shield - dmg < 0)
+            {
+                remainingDamage = dmg - this.Shield;
+                this.Shield = 0;
+                this.Health -= remainingDamage;
+            }
+            else
+            {
+                this.Shield -= dmg;
+            }
+            if (this.Health <= MinHealth)
+            {
+                this.Health = 0;
+                this.Destroy();
+            }
+            if (this.Health <= 0)
+            {
+                //Change the screen to GameOver screen
+                ScreenManager.Instance.ChangeScreen("GameOverScreen");
+            }
+        }
+
+        public void Destroy()
+        {
+            this.Owner.RemoveObject(this);
+            int score = this.Owner.scoreManager.TotalScore;
+            Data.AddScore(score);
+            //TODO   when the screen is GameOver -> Show Score =>  Owner.ScoreManager.ScoringPoints;
+            //End of the game
+        }
+
         public int Shield
         {
-            get { return this.shield; }
+            get
+            {
+                return this.shield;
+            }
             set
             {
                 if (value < 0)
@@ -86,18 +154,44 @@ using SpaceWars.Core;
             }
         }
 
+        public int HealthBarPosition
+        {
+            get
+            {
+                if (this.health * 7 >= 700)
+                {
+                    return 700;
+                }
+                return this.health * 7;
+            }
+        }
+
+        public int ShieldBarPosition
+        {
+            get
+            {
+                if (this.shield * 7 >= 700)
+                {
+                    return 700;
+                }
+                return this.shield * 7;
+            }
+        }
+
         public override void LoadContent(ResourceManager resourceManager)
         {
-            Stats.HealthText.Text = "Health: " + this.Health;
-            Stats.ShieldText.Text = "Shield: " + this.Shield;
-            Stats.ScoreText.Text = "Score: " + Owner.scoreManager.TotalScore;
-            Stats.Level.Text = "Level: " + this.Level;
-            Stats.LoadContent(resourceManager);
+            this.Stats.HealthText.Text = "Health: " + this.Health;
+            this.Stats.ShieldText.Text = "Shield: " + this.Shield;
+            this.Stats.ScoreText.Text = "Score: " + this.Owner.scoreManager.TotalScore;
+            this.Stats.Level.Text = "Level: " + this.Level;
+            this.Stats.LoadContent(resourceManager);
             //DONT REMOVE THIS
             //HealthText.Text = "Health: " + this.Health;
             //ShieldText.Text = "Shield: " + this.Shield;
             //ScoreText.Text = "Score:" + Owner.scoreManager.TotalScore;
-            Texture = resourceManager.GetResource("ship");
+            this.Texture = resourceManager.GetResource("ship");
+            this.healthBar = resourceManager.GetResource("playerHealthbar");
+            this.shieldBar = resourceManager.GetResource("shieldBar");
         }
 
         public override void Think(GameTime gameTime)
@@ -106,134 +200,102 @@ using SpaceWars.Core;
             KeyboardState keyboard = Keyboard.GetState();
 
             //Updating Texts
-            Stats.HealthText.Text =  "Health: " + this.Health;
-            Stats.ShieldText.Text = "Shield: " + this.Shield;
-            Stats.ScoreText.Text = "Score: " + Owner.scoreManager.TotalScore;
-            Stats.Level.Text = "Level: " + this.Level;
+            this.Stats.HealthText.Text = this.Health.ToString();
+            this.Stats.ShieldText.Text = this.Shield.ToString();
+            this.Stats.ScoreText.Text = "Score: " + this.Owner.scoreManager.TotalScore;
+            this.Stats.Level.Text = "Level: " + this.Level;
 
+            //Updating healthbar image.
+            this.healthRectangle = new Rectangle(50, 920, this.HealthBarPosition, 20);
+
+            //Updating shieldbar image.
+            this.shieldRectangle = new Rectangle(50, 890, this.ShieldBarPosition, 20);
 
 
             //Player Controls
-            if (keyboard.IsKeyDown(Keys.A) && Position.X > LeftCorner)
+            if (keyboard.IsKeyDown(Keys.A) && this.Position.X > LeftCorner)
             {
-                leftTemp = LEFT;
+                this.leftTemp = LEFT;
             }
             else
             {
-                leftTemp = ZERO;
+                this.leftTemp = ZERO;
             }
 
-            if (keyboard.IsKeyDown(Keys.D) && Position.X < RightCorner)
+            if (keyboard.IsKeyDown(Keys.D) && this.Position.X < RightCorner)
             {
-                rightTemp = RIGHT;
+                this.rightTemp = RIGHT;
             }
             else
             {
-                rightTemp = ZERO;
+                this.rightTemp = ZERO;
             }
 
-            if (keyboard.IsKeyDown(Keys.W) && Position.Y > UpCorner)
+            if (keyboard.IsKeyDown(Keys.W) && this.Position.Y > UpCorner)
             {
-                upTemp = UP;
+                this.upTemp = UP;
             }
             else
             {
-                upTemp = ZERO;
+                this.upTemp = ZERO;
             }
 
-            if (keyboard.IsKeyDown(Keys.S) && Position.Y < DownCorner)
+            if (keyboard.IsKeyDown(Keys.S) && this.Position.Y < DownCorner)
             {
-                downTemp = DOWN;
+                this.downTemp = DOWN;
             }
             else
             {
-                downTemp = ZERO;
+                this.downTemp = ZERO;
             }
 
-            Speed = leftTemp + rightTemp + upTemp + downTemp;
+            this.Speed = this.leftTemp + this.rightTemp + this.upTemp + this.downTemp;
 
-            elapsedShootTime += gameTime.ElapsedGameTime.Milliseconds;
+            this.elapsedShootTime += gameTime.ElapsedGameTime.Milliseconds;
 
-            if (keyboard.IsKeyDown(Keys.Space) && elapsedShootTime > ShootInterval)
+            if (keyboard.IsKeyDown(Keys.Space) && this.elapsedShootTime > ShootInterval)
             {
-                elapsedShootTime = 0;
-                Shoot();
+                this.elapsedShootTime = 0;
+                this.Shoot();
             }
-  
         }
 
         public override void Intersect(IGameObject obj)
         {
-            
-        }
-
-        public void TakeDMG(int dmg)
-        {
-            int remainingDamage;
-            
-                if (Shield - dmg < 0)
-                {
-                    remainingDamage = dmg - Shield;
-                    Shield = 0;
-                    Health -= remainingDamage;
-                }
-                else
-                {
-                    Shield -= dmg;
-                }
-                if (Health <= MinHealth)
-                {
-                    Health = 0;
-                    Destroy();
-      
-            }
-                if (Health <= 0)
-                {
-                    //Change the screen to GameOver screen
-                    ScreenManager.Instance.ChangeScreen("GameOverScreen");
-                }
         }
 
         public void GiveHealth(int amount)
         {
-            Health += amount;
-        }
-
-        public  void Destroy()
-        {
-            Owner.RemoveObject(this);
-            int score = Owner.scoreManager.TotalScore;
-            Data.AddScore(score);
-            //TODO   when the screen is GameOver -> Show Score =>  Owner.ScoreManager.ScoringPoints;
-            //End of the game
+            this.Health += amount;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, Position, Color.White);
-            Stats.Draw(spriteBatch);
+            spriteBatch.Draw(this.healthBar, this.healthRectangle, Color.White);
+            spriteBatch.Draw(this.shieldBar, this.shieldRectangle, Color.White);
+            spriteBatch.Draw(this.Texture, this.Position, Color.White);
+
+            this.Stats.Draw(spriteBatch);
             //HealthText.Draw(spriteBatch);
             //ShieldText.Draw(spriteBatch);
             //ScoreText.Draw(spriteBatch);
         }
 
-        void Shoot()
-        {
-            Owner.AddObject(new Bullet(Position));
-        }
-
         public void AddShield(int amount)
         {
-            if(Shield + amount > MaxShield)
+            if (this.Shield + amount > MaxShield)
             {
-                Shield = MaxShield;
+                this.Shield = MaxShield;
             }
             else
             {
-                Shield += amount;
-
+                this.Shield += amount;
             }
         }
+
+        void Shoot()
+        {
+            this.Owner.AddObject(new Bullet(this.Position));
+        }
     }
-    
 }

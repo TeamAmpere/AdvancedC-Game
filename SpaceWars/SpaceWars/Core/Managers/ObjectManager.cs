@@ -179,7 +179,6 @@
                         this.AddObject(new ShieldBonus());
                         break;
                     default:
-                        
                         break;
                 }
             }

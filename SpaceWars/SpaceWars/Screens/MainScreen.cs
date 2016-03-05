@@ -22,7 +22,7 @@
             bakcground.LoadContent(Content);
             objectManager.LoadContent(Content);
             objectManager.AddObject(player);
-            this.texture2 = Content.Load<Texture2D>("Pause");
+            this.texture2 = Content.Load<Texture2D>("sprites/Pause");
             base.LoadContent(Content);
         }
 

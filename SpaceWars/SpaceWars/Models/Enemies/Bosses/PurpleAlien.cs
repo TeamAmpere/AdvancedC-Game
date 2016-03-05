@@ -33,7 +33,7 @@
             Random rand = new Random();
 
             this.Position = new Vector2(rand.Next(LeftCorner, RightCorner), -50);
-            this.Speed = new Vector2(0, 0);   
+            this.Speed = new Vector2(0, 0);
             this.BoundingBox = new Rectangle((int)this.Position.X, (int)this.Position.Y, 100, 50);
             this.ShootDelayConst = shootDelayConst;
             this.shootDelay = shootDelayConst;
@@ -69,8 +69,8 @@
 
         public override void Think(GameTime gameTime)
         {
-            this.rectangle = new Rectangle(50,50,this.health,20);
-         this.Shoot();
+            this.rectangle = new Rectangle(50, 75, this.health * 7, 20);
+            this.Shoot();
             if (this.changePossitionDelay < 0)
             {
                 Random rand = new Random();
@@ -109,13 +109,13 @@
         {
             this.Texture = resourceManager.GetResource("purpleAlien");
             this.helthTexture = resourceManager.GetResource("healthBar");
-            }
+        }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-            spriteBatch.Draw(helthTexture, this.rectangle,Color.White);
-          
+            spriteBatch.Draw(helthTexture, this.rectangle, Color.White);
+
         }
     }
 }

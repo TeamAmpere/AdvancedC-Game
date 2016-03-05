@@ -23,7 +23,7 @@
         //Load Content
         public void LoadContent(ContentManager Content)
         {
-            texture = Content.Load<Texture2D>("space");
+            texture = Content.Load<Texture2D>("screens/space");
         }
 
         public void UnloadContet()

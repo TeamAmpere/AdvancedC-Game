@@ -13,23 +13,26 @@
 
         public void LoadContent(Microsoft.Xna.Framework.Content.ContentManager content)
         {
-            this.resources["ship"] = content.Load<Texture2D>("ship");
-            this.resources["laser"] = content.Load<Texture2D>("laser");
-            this.resources["asteroid"] = content.Load<Texture2D>("asteroid");
-            this.resources["rocky"] = content.Load<Texture2D>("rocky");
-            this.resources["redfart"] = content.Load<Texture2D>("redfart");
-            this.resources["ShieldBonus"] = content.Load<Texture2D>("ShieldBonus");
-            this.resources["HealthBonus"] = content.Load<Texture2D>("HealthBonus");
-            this.resources["bigEnemy"] = content.Load<Texture2D>("bigEnemy");
-            this.resources["littleEnemy"] = content.Load<Texture2D>("littleEnemy");
-            this.resources["smallEnemyBullet"] = content.Load<Texture2D>("smallEnemyBullet");
-            this.resources["bigEnemyBullet"] = content.Load<Texture2D>("bigEnemyBullet");
-            this.resources["alienRocket"] = content.Load<Texture2D>("alienRocket");
-            this.resources["purpleAlien"] = content.Load<Texture2D>("purpleAlien");
-            this.resources["explosion3"] = content.Load<Texture2D>("explosion3");
-            this.resources["healthBar"] = content.Load<Texture2D>("HealthBar");
-            this.fontResources["spritefont"] = content.Load<SpriteFont>("spritefont");
-            this.fontResources["scorefont"] = content.Load<SpriteFont>("scorefont");
+            this.resources["ship"] = content.Load<Texture2D>("Ships/ship");
+            this.resources["laser"] = content.Load<Texture2D>("bullets/laser");
+            this.resources["asteroid"] = content.Load<Texture2D>("asteroids/asteroid");
+            this.resources["rocky"] = content.Load<Texture2D>("asteroids/rocky");
+            this.resources["redfart"] = content.Load<Texture2D>("asteroids/redfart");
+            this.resources["ShieldBonus"] = content.Load<Texture2D>("bonuses/ShieldBonus");
+            this.resources["HealthBonus"] = content.Load<Texture2D>("bonuses/HealthBonus");
+            this.resources["bigEnemy"] = content.Load<Texture2D>("Ships/bigEnemy");
+            this.resources["littleEnemy"] = content.Load<Texture2D>("Ships/littleEnemy");
+            this.resources["smallEnemyBullet"] = content.Load<Texture2D>("bullets/smallEnemyBullet");
+            this.resources["bigEnemyBullet"] = content.Load<Texture2D>("bullets/bigEnemyBullet");
+            this.resources["alienRocket"] = content.Load<Texture2D>("bullets/alienRocket");
+            this.resources["purpleAlien"] = content.Load<Texture2D>("Ships/purpleAlien");
+            this.resources["explosion3"] = content.Load<Texture2D>("sprites/explosion3");
+            this.resources["healthBar"] = content.Load<Texture2D>("sprites/HealthBar");
+            this.resources["playerHealthbar"] = content.Load<Texture2D>("sprites/playerHealthbar");
+            this.resources["shieldBar"] = content.Load<Texture2D>("sprites/shieldBar");
+
+            this.fontResources["spritefont"] = content.Load<SpriteFont>("sprites/spritefont");
+            this.fontResources["scorefont"] = content.Load<SpriteFont>("sprites/scorefont");
 
         }
 

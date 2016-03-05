@@ -38,15 +38,24 @@
             {
                 Owner.scoreManager.AddPoints(enemyTarget.ScoringPoints);
             }
+
             if (obj is IAsteroid)
             {
                 var asteroid = (Asteroid)obj;
-                Owner.AddObject(new Explosion(this.ExplosionTexture, new Vector2(asteroid.Position.X, asteroid.Position.Y)));
-                //Explosion explosion = new Explosion(this.ExplosionTexture, new Vector2(asteroid.Position.X, asteroid.Position.Y));
+                var explosion = new Explosion(
+                    this.ExplosionTexture,
+                    new Vector2(asteroid.Position.X, asteroid.Position.Y + 20));
+
+                Owner.AddObject(explosion);
                 Owner.RemoveObject(asteroid);
                 Owner.RemoveObject(this);
             }
-           
+
+            if (obj is Enemy)
+            {
+                var enemy = (Enemy)obj;
+                Owner.AddObject(new Explosion(this.ExplosionTexture, new Vector2(enemy.Position.X + 50, enemy.Position.Y + 65), 1.5f));
+            }
         }
 
         public override void LoadContent(ResourceManager resourceManager)
@@ -67,7 +76,6 @@
                 needToRemove = true;
             if (Position.Y < UpCorner)
                 needToRemove = true;
-
             if (needToRemove)
                 Owner.RemoveObject(this);
         }

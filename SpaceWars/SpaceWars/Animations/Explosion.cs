@@ -17,8 +17,9 @@
 
         private int spriteWidth;
 
-        public Explosion(Texture2D texture, Vector2 position)
+        public Explosion(Texture2D texture, Vector2 position, float scale = 1.0f)
         {
+            this.Scale = scale;
             this.Texture = texture;
             this.Position = position;
             this.Timer = 0f;
@@ -66,11 +67,11 @@
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.Texture, this.Position, this.SourceRectangle, Color.White, 0f, this.Origin, 1.0f, SpriteEffects.None, 0);
+            spriteBatch.Draw(this.Texture, this.Position, this.SourceRectangle, Color.White, 0.0f, this.Origin, this.Scale, SpriteEffects.None, 0);
         }
 
+        public float Scale { get; set; }
         public float Timer { get; set; }
-
         public float Interval { get; set; }
 
         public Vector2 Origin { get; set; }
