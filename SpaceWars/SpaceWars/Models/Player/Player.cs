@@ -1,9 +1,15 @@
 ﻿namespace SpaceWars.GameObjects
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.CompilerServices;
+    using System.Threading;
+
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;
 
+    using SpaceWars.Animations;
     using SpaceWars.Core;
     using SpaceWars.Core.Managers;
     using SpaceWars.Interfaces;
@@ -36,6 +42,10 @@
 
         private static readonly Vector2 ZERO = new Vector2(0, 0);
 
+        private static readonly Vector2 DashRight = new Vector2(250, 0);
+
+        private static readonly Vector2 DashLeft = new Vector2(-250, 0);
+
         private Vector2 downTemp;
 
         private int elapsedShootTime;
@@ -45,6 +55,8 @@
         private Texture2D shieldBar;
 
         private Texture2D healthBar;
+
+        private Texture2D dashTexture;
 
         private Rectangle healthRectangle;
 
@@ -62,10 +74,16 @@
 
         private Vector2 upTemp;
 
+        private float dashDelay;
+
+        private List<Dash> dashes;
+
         public Player()
         {
             //Texture = null;
-            this.Position = new Vector2(350, 890);
+            this.dashes = new List<Dash>();
+            dashDelay = 0;
+            Position = new Vector2(350, 890);
             this.BoundingBox = new Rectangle(350, 890, 64, 64);
             this.Speed = new Vector2(0, 0);
             this.Health = 100;
@@ -77,6 +95,7 @@
         //private Stringer ShieldText = new Stringer(new Vector2(150, 200));
         //private Stringer ScoreText = new Stringer(new Vector2(450, 200));
 
+        public static Vector2 GetPlayerPosition { get; set; }
         public Stats Stats { get; set; }
 
         public int Health
@@ -192,6 +211,7 @@
             this.Texture = resourceManager.GetResource("ship");
             this.healthBar = resourceManager.GetResource("playerHealthbar");
             this.shieldBar = resourceManager.GetResource("shieldBar");
+            this.dashTexture = resourceManager.GetResource("dash");
         }
 
         public override void Think(GameTime gameTime)
@@ -199,6 +219,7 @@
             //Getting the keyboardState
             KeyboardState keyboard = Keyboard.GetState();
 
+            GetPlayerPosition = new Vector2(this.Position.X, this.Position.Y);
             //Updating Texts
             this.Stats.HealthText.Text = this.Health.ToString();
             this.Stats.ShieldText.Text = this.Shield.ToString();
@@ -249,6 +270,36 @@
                 this.downTemp = ZERO;
             }
 
+            if (keyboard.IsKeyDown(Keys.E) && this.Position.X + 250 < RightCorner)
+            {
+                if (this.dashDelay <= 0)
+                {
+                    this.dashes.Add(new Dash(this.Position, this.dashTexture));
+                    this.Position += DashRight;
+                    this.dashDelay = 50;
+                }
+
+                else
+                {
+                    this.dashDelay--;
+                }
+            }
+
+            if (keyboard.IsKeyDown(Keys.Q) && this.Position.X - 250 > LeftCorner)
+            {
+                if (this.dashDelay <= 0)
+                {
+                    this.dashes.Add(new Dash(this.Position, this.dashTexture));
+                    this.Position += DashLeft;
+                    this.dashDelay = 50;
+                }
+
+                else
+                {
+                    this.dashDelay--;
+                }
+            }
+
             this.Speed = this.leftTemp + this.rightTemp + this.upTemp + this.downTemp;
 
             this.elapsedShootTime += gameTime.ElapsedGameTime.Milliseconds;
@@ -257,6 +308,16 @@
             {
                 this.elapsedShootTime = 0;
                 this.Shoot();
+            }
+
+            foreach (var dash in this.dashes)
+            {
+                dash.Think(gameTime);
+
+                if (dash.NeedToRemove)
+                {
+                    this.dashes.Remove(dash);
+                }
             }
         }
 
@@ -273,6 +334,10 @@
         {
             spriteBatch.Draw(this.healthBar, this.healthRectangle, Color.White);
             spriteBatch.Draw(this.shieldBar, this.shieldRectangle, Color.White);
+            foreach (var dash in this.dashes)
+            {
+                dash.Draw(spriteBatch);
+            }
             spriteBatch.Draw(this.Texture, this.Position, Color.White);
 
             this.Stats.Draw(spriteBatch);

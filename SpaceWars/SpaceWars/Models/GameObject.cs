@@ -31,7 +31,9 @@
             BoundingBox = new Rectangle((int)Position.X, (int)Position.Y, this.Texture.Width, this.Texture.Height);
         }
 
-        public abstract void Intersect(IGameObject obj);
+        public virtual void Intersect(IGameObject obj)
+        {
+        }
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {

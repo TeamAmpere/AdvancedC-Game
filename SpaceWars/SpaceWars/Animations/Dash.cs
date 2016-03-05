@@ -1,41 +1,34 @@
-﻿namespace SpaceWars.GameObjects
+﻿namespace SpaceWars.Animations
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
     using SpaceWars.Core.Managers;
+    using SpaceWars.GameObjects;
     using SpaceWars.Interfaces;
     using SpaceWars.Model;
 
-    public class Explosion : GameObject
+    public class Dash : GameObject
     {
+        private Texture2D texture;
         private readonly int interval;
-
         private int currentFrame;
-
         private int spriteHeight;
-
         private int spriteWidth;
 
-        public Explosion(Texture2D texture, Vector2 position, float scale = 1.0f)
+        public Dash(Vector2 position, Texture2D texture)
         {
-            this.Scale = scale;
             this.Texture = texture;
             this.Position = position;
             this.Timer = 0f;
-            this.Interval = 20f;
+            this.Interval = 100f;
             this.spriteWidth = texture.Width;
             this.spriteHeight = texture.Height;
             this.IsVisible = true;
         }
-
-        //public Texture2D Texture { get; set; }
-
-        //public Vector2 Position { get; set; }
-
-
         public override void LoadContent(ResourceManager resourceManager)
         {
+            this.texture = resourceManager.GetResource("dash");
         }
 
         public override void Think(GameTime gameTime)
@@ -48,29 +41,22 @@
                 this.Timer = 0.0f;
             }
 
-            if (this.currentFrame == 17)
+            if (this.currentFrame == 12)
             {
                 this.NeedToRemove = false;
                 //this.IsVisible = false;
             }
 
             //this.SourceRectangle = new Rectangle(this.currentFrame * this.spriteHeight, 0, this.spriteWidth, this.spriteHeight);
-            this.SourceRectangle = new Rectangle(this.currentFrame * 120, 0, 120, this.spriteHeight); // WORKS ON MAGIC DON'T TOUCH CAN'T FIX IT !!!
+            this.SourceRectangle = new Rectangle(this.currentFrame * 57, 0, 55, this.spriteHeight); // WORKS ON MAGIC DON'T TOUCH CAN'T FIX IT !!!
             this.Origin = new Vector2(SourceRectangle.Width / 2, SourceRectangle.Height / 2);
-        }
-
-
-        public override void Intersect(IGameObject obj)
-        {
-            throw new DeviceNotResetException();
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.Texture, this.Position, this.SourceRectangle, Color.White, 0.0f, this.Origin, this.Scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(this.Texture, Player.GetPlayerPosition, this.SourceRectangle, Color.White, 1.0f, this.Origin, 2.0f, SpriteEffects.FlipVertically, 0);
         }
 
-        public float Scale { get; set; }
         public float Timer { get; set; }
         public float Interval { get; set; }
 

@@ -30,6 +30,7 @@
             this.resources["healthBar"] = content.Load<Texture2D>("sprites/HealthBar");
             this.resources["playerHealthbar"] = content.Load<Texture2D>("sprites/playerHealthbar");
             this.resources["shieldBar"] = content.Load<Texture2D>("sprites/shieldBar");
+            this.resources["dash"] = content.Load<Texture2D>("sprites/dash");
 
             this.fontResources["spritefont"] = content.Load<SpriteFont>("sprites/spritefont");
             this.fontResources["scorefont"] = content.Load<SpriteFont>("sprites/scorefont");

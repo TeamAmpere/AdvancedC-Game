@@ -8,9 +8,10 @@
     public interface IPlayer
     {
 
-        int Health { get;}
-        int Shield { get;  }
+        int Health { get; }
+        int Shield { get; }
         int Level { get; }
+        Vector2 Position { get; set; }
         void LoadContent(ResourceManager resourceManager);
         void Think(GameTime gameTime);
         void Intersect(IGameObject obj);
@@ -19,8 +20,6 @@
         void Destroy();
         void Draw(SpriteBatch spriteBatch);
         void AddShield(int amount);
-        
-        
 
     }
 }

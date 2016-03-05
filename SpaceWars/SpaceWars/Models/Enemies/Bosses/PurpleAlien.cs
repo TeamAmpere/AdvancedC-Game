@@ -17,6 +17,8 @@
         private const int RightCorner = 800 - 100; // Screen width - health bonus width
         private const int DownCorner = 950 - 279; // Screen height - health bonus height
         private const int LeftCorner = 0;
+        private static readonly Vector2 LEFT = new Vector2(-4, 0);
+        private static readonly Vector2 RIGHT = new Vector2(4, 0);
         private readonly int ShootDelayConst;
         private int shootDelay;
         private const int scoringPoints = 0;
@@ -28,7 +30,7 @@
         private Rectangle rectangle;
         private int angryCount = 80;
 
-        public PurpleAlien(int shootDelayConst)
+        public PurpleAlien(int shootDelayConst, Vector2 playerPosition)
         {
             Random rand = new Random();
 
@@ -61,8 +63,8 @@
             }
             else
             {
-                int bulletX = (int)this.Position.X + 22; //22 because half of the texture width - bullet width
-                this.Owner.AddObject(new AlienRocket(new Vector2(bulletX, this.Position.Y)));
+                int bulletX = (int)Position.X + 22; //22 because half of the texture width - bullet width
+                this.Owner.AddObject(new AlienRocket(new Vector2(bulletX, Position.Y)));
                 this.shootDelay = this.ShootDelayConst;
             }
         }
@@ -71,13 +73,14 @@
         {
             this.rectangle = new Rectangle(50, 75, this.health * 7, 20);
             this.Shoot();
-            if (this.changePossitionDelay < 0)
+            if (Player.GetPlayerPosition.X > this.Position.X)
             {
-                Random rand = new Random();
-                this.Position = new Vector2(rand.Next(LeftCorner, RightCorner), -50);
-                this.changePossitionDelay = 20;
+                this.Position += RIGHT;
             }
-            this.changePossitionDelay--;
+            else
+            {
+                this.Position += LEFT;
+            }
 
             if (this.health < 50)
             {
