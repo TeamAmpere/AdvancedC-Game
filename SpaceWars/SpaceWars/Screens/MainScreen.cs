@@ -14,6 +14,7 @@
         Player player = new Player();
         ObjectManager objectManager = new ObjectManager();
 
+        private Texture2D texture2;
         private bool pause = false;
 
         public override void LoadContent(Microsoft.Xna.Framework.Content.ContentManager Content)
@@ -21,6 +22,7 @@
             bakcground.LoadContent(Content);
             objectManager.LoadContent(Content);
             objectManager.AddObject(player);
+            this.texture2 = Content.Load<Texture2D>("Pause");
             base.LoadContent(Content);
         }
 
@@ -78,6 +80,10 @@
         {
             bakcground.Draw(spriteBatch);
             objectManager.Draw(spriteBatch);
+            if (pause)
+            {
+                spriteBatch.Draw(this.texture2,new Vector2(80,400), Color.AliceBlue );
+            }
             base.Draw(spriteBatch);
         }
     }
