@@ -1,6 +1,10 @@
 ﻿namespace SpaceWars.GameObjects
 {
+    using System.Net.Mime;
+    using System.Runtime.CompilerServices;
+
     using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Audio;
     using Microsoft.Xna.Framework.Graphics;
 
     using SpaceWars.Core.Managers;
@@ -17,6 +21,7 @@
 
         private int spriteWidth;
 
+
         public Explosion(Texture2D texture, Vector2 position, float scale = 1.0f)
         {
             this.Scale = scale;
@@ -27,6 +32,7 @@
             this.spriteWidth = texture.Width;
             this.spriteHeight = texture.Height;
             this.IsVisible = true;
+           
         }
 
         //public Texture2D Texture { get; set; }
@@ -36,10 +42,12 @@
 
         public override void LoadContent(ResourceManager resourceManager)
         {
+           
         }
 
         public override void Think(GameTime gameTime)
         {
+            
             this.Timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
             if (this.Timer > this.interval)
@@ -67,8 +75,10 @@
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+          
             spriteBatch.Draw(this.Texture, this.Position, this.SourceRectangle, Color.White, 0.0f, this.Origin, this.Scale, SpriteEffects.None, 0);
         }
+        
 
         public float Scale { get; set; }
         public float Timer { get; set; }

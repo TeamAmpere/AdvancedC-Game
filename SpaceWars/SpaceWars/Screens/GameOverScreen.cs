@@ -6,6 +6,7 @@
     using GameObjects;
     using Microsoft.Xna.Framework.Input;
     using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Media;
 
     using SpaceWars.Core.Managers;
 
@@ -24,6 +25,7 @@
             background.LoadContent(Content);
             gameOverStats.LoadConent(Content);
             base.LoadContent(Content);
+            MediaPlayer.Stop();
         }
 
         public override void UnloadContent()

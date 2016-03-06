@@ -16,7 +16,7 @@
             this.Color = Color.White;
         }
 
-        private Vector2 Position { get; }
+        private Vector2 Position { get; set; }
 
         public string Text { get; set; }
 

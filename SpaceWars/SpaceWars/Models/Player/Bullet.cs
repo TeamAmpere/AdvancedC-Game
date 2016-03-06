@@ -5,6 +5,7 @@
     using SpaceWars.Interfaces;
     using SpaceWars.Model;
     using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Audio;
     using Microsoft.Xna.Framework.Graphics;
 
     //using SpaceWars.Animations;
@@ -21,6 +22,9 @@
         private const int RightCorner = 800;
         private const int UpCorner = 0;
         private const int DownCorner = 950;
+        private SoundEffect explosion;
+
+        private SoundEffectInstance explosionInstance;
 
         private Texture2D ExplosionTexture;
 
@@ -29,6 +33,7 @@
             Speed = UP;
             Position = position;
             BoundingBox = new Rectangle((int)position.X,(int)position.Y, TextureWidth, TextureHeight);
+            
         }
 
         public override void Intersect(IGameObject obj)
@@ -45,7 +50,8 @@
                 var explosion = new Explosion(
                     this.ExplosionTexture,
                     new Vector2(asteroid.Position.X, asteroid.Position.Y + 20));
-
+                this.explosionInstance.Volume = 0.5f;
+                this.explosionInstance.Play();
                 Owner.AddObject(explosion);
                 Owner.RemoveObject(asteroid);
                 Owner.RemoveObject(this);
@@ -53,6 +59,8 @@
 
             if (obj is Enemy)
             {
+                this.explosionInstance.Volume = 0.3f;
+                this.explosionInstance.Play();
                 var enemy = (Enemy)obj;
                 Owner.AddObject(new Explosion(this.ExplosionTexture, new Vector2(enemy.Position.X + 50, enemy.Position.Y + 65), 1.5f));
             }
@@ -60,6 +68,8 @@
 
         public override void LoadContent(ResourceManager resourceManager)
         {
+            this.explosion = resourceManager.GetSound("explosion");
+            this.explosionInstance = this.explosion.CreateInstance();
             Texture = resourceManager.GetResource("laser");
             this.ExplosionTexture = resourceManager.GetResource("explosion3");
         }

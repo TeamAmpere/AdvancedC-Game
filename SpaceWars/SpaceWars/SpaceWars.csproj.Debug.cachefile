@@ -1,5 +1,6 @@
 Content\sprites\scorefont.xnb
 Content\sprites\spritefont.xnb
+Content\sprites\playerHealthbar.xnb
 Content\bonuses\HealthBonus.xnb
 Content\bonuses\ShieldBonus.xnb
 Content\bullets\alienRocket.xnb
@@ -23,6 +24,8 @@ Content\asteroids\asteroid.xnb
 Content\asteroids\chunky.xnb
 Content\asteroids\redfart.xnb
 Content\asteroids\rocky.xnb
-Content\sprites\playerHealthbar.xnb
 Content\sprites\shieldBar.xnb
 Content\sprites\dash.xnb
+Content\sounds\space.xnb
+Content\sounds\explosion.xnb
+Content\sounds\space.wma

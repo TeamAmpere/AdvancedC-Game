@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
 
+    using Microsoft.Xna.Framework.Audio;
     using Microsoft.Xna.Framework.Graphics;
 
     public class ResourceManager
@@ -9,7 +10,7 @@
 
         private Dictionary<string, Texture2D> resources = new Dictionary<string, Texture2D>();
         private Dictionary<string, SpriteFont> fontResources = new Dictionary<string, SpriteFont>();
-
+        Dictionary<string,SoundEffect> sounds = new Dictionary<string, SoundEffect>(); 
 
         public void LoadContent(Microsoft.Xna.Framework.Content.ContentManager content)
         {
@@ -32,6 +33,8 @@
             this.resources["shieldBar"] = content.Load<Texture2D>("sprites/shieldBar");
             this.resources["dash"] = content.Load<Texture2D>("sprites/dash");
 
+            this.sounds["explosion"] = content.Load<SoundEffect>("sounds/explosion");
+
             this.fontResources["spritefont"] = content.Load<SpriteFont>("sprites/spritefont");
             this.fontResources["scorefont"] = content.Load<SpriteFont>("sprites/scorefont");
 
@@ -45,6 +48,11 @@
         public Texture2D GetResource(string resourceName)
         {
             return this.resources[resourceName];
+        }
+
+        public SoundEffect GetSound(string soundName)
+        {
+            return this.sounds[soundName];
         }
     }
 }

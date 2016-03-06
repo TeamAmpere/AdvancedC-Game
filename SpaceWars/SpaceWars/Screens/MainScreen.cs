@@ -1,10 +1,16 @@
 ﻿namespace SpaceWars.Screens
 {
+    using System;
+
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using GameObjects;
+
+    using Microsoft.Xna.Framework.Audio;
+
     using ScreenManagement;
     using Microsoft.Xna.Framework.Input;
+    using Microsoft.Xna.Framework.Media;
 
     using SpaceWars.Core.Managers;
 
@@ -13,6 +19,8 @@
         Starfield bakcground = new Starfield();
         Player player = new Player();
         ObjectManager objectManager = new ObjectManager();
+
+        private Song sound;
 
         private Texture2D texture2;
         private bool pause = false;
@@ -23,7 +31,11 @@
             objectManager.LoadContent(Content);
             objectManager.AddObject(player);
             this.texture2 = Content.Load<Texture2D>("sprites/Pause");
+            this.sound = Content.Load<Song>("sounds/space");
             base.LoadContent(Content);
+            MediaPlayer.Play(this.sound);
+            MediaPlayer.Volume = 2f;
+            MediaPlayer.IsRepeating = true;
         }
 
         public override void UnloadContent()
@@ -34,7 +46,10 @@
 
         public override void Update(GameTime gameTime)
         {
-            //Controls
+
+            
+          
+            //Controls5
             KeyboardState keyboard = Keyboard.GetState();
 
             if (keyboard.IsKeyDown(Keys.Escape))

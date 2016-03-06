@@ -196,8 +196,8 @@
 
                 switch (player.Level)
                 {
-                    //case 0:
-                      //  break;
+                    case 0:
+                        break;
                     case 1:
                         this.AddObject(new LittleEnemy(50));
                         break;
@@ -212,7 +212,7 @@
                                 break;
                         }
                         break;
-                    case 0:
+                    case 3:
                         if (!this.IsPurpleEnemy)
                         {
                             this.IsPurpleEnemy = true;
