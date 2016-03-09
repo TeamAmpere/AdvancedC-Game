@@ -10,6 +10,7 @@
 
     //using SpaceWars.Animations;
     using SpaceWars.Core.Managers;
+    using SpaceWars.Models.Enemies.Bosses;
 
     public class Bullet: GameObject, IBullet
     {
@@ -57,7 +58,18 @@
                 Owner.RemoveObject(this);
             }
 
-            if (obj is Enemy)
+            if (obj is PurpleAlien)
+            {
+                var boss = (PurpleAlien)obj;
+                if (boss.Health <= 0)
+                {
+                    Owner.Explosions.Add(new Explosion(
+                    this.ExplosionTexture,
+                    new Vector2(boss.Position.X, boss.Position.Y + 20), 20f, 50));
+                }
+            }
+
+            if (obj is Enemy && !(obj is PurpleAlien))
             {
                 this.explosionInstance.Volume = 0.3f;
                 this.explosionInstance.Play();

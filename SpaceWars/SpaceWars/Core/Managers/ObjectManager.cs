@@ -32,11 +32,12 @@
 
         public ScoreManager scoreManager = new ScoreManager();
 
-        private List<Explosion> explosions = new List<Explosion>(); 
+        public List<Explosion> Explosions { get; set; }
 
         public ObjectManager()
         {
             this.ResourceMgr = new ResourceManager();
+            this.Explosions = new List<Explosion>();
         }
 
         public ResourceManager ResourceMgr { get; set; }
@@ -54,7 +55,7 @@
 
                 else
                 {
-                    this.explosions.Add((Explosion)obj);
+                    this.Explosions.Add((Explosion)obj);
                 }
                 
             }
@@ -81,7 +82,7 @@
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (Explosion explosion in this.explosions)
+            foreach (Explosion explosion in this.Explosions)
             {
                 explosion.Draw(spriteBatch);
             }
@@ -130,7 +131,7 @@
                 this.objects[i].Think(gametime);
             }
 
-            foreach (Explosion explosion in this.explosions)
+            foreach (Explosion explosion in this.Explosions)
             {
                 explosion.Think(gametime);
             }
@@ -148,9 +149,9 @@
             if (this.elapsedAsteroidTime > AsteroidFieldPeriod)
             {
                 this.elapsedAsteroidTime = 0;
-                AsteroidManager asteroidManager = new AsteroidManager();
-                var asteroid = asteroidManager.CreateASteroid(player);
-                this.AddObject(asteroid);
+                //AsteroidManager asteroidManager = new AsteroidManager();
+                //var asteroid = asteroidManager.CreateASteroid(player);
+                //this.AddObject(asteroid);
             }
         }
 
@@ -196,8 +197,8 @@
 
                 switch (player.Level)
                 {
-                    case 0:
-                        break;
+                    //case 0:
+                    //    break;
                     case 1:
                         this.AddObject(new LittleEnemy(50));
                         break;
@@ -212,7 +213,7 @@
                                 break;
                         }
                         break;
-                    case 3:
+                    case 0:
                         if (!this.IsPurpleEnemy)
                         {
                             this.IsPurpleEnemy = true;
@@ -245,11 +246,11 @@
                 }
             }
 
-            for (int i = this.explosions.Count - 1; i >= 0; i--)
+            for (int i = this.Explosions.Count - 1; i >= 0; i--)
             {
-                if (this.explosions[i].NeedToRemove)
+                if (this.Explosions[i].NeedToRemove)
                 {
-                    this.explosions.Remove(this.explosions[i]);
+                    this.Explosions.Remove(this.Explosions[i]);
                 }
             }
         }

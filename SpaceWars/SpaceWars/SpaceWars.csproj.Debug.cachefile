@@ -28,4 +28,9 @@ Content\sprites\shieldBar.xnb
 Content\sprites\dash.xnb
 Content\sounds\space.xnb
 Content\sounds\explosion.xnb
+Content\sounds\backgroundMusic.xnb
+Content\sounds\GameOver.xnb
+Content\bullets\bossLaser.xnb
+Content\bullets\purpleBullet.xnb
 Content\sounds\space.wma
+Content\sounds\backgroundMusic.wma

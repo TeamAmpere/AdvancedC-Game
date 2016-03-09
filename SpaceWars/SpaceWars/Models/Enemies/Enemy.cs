@@ -14,10 +14,7 @@
         public override void Intersect(IGameObject obj)
         {
             OnGetEnemy(obj);
-            if (obj.GetType() == typeof(Bullet))
-            {
-                this.NeedToRemove = true;
-            }
+            
         }
     }
 }

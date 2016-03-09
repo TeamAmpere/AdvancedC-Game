@@ -20,7 +20,18 @@
         public static void AddScore(int score)
         {
             bool scoreExists = false;
-            string[] readText = File.ReadAllLines(path);
+            string[] readText = null;
+
+            if (File.Exists(path))
+            {
+                 readText = File.ReadAllLines(path);
+            }
+
+            else
+            {
+                File.Create(path);
+            }
+
 
             using (StreamReader reader = new StreamReader(path))
             {

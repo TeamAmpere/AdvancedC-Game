@@ -6,8 +6,6 @@
     using Microsoft.Xna.Framework.Graphics;
     using GameObjects;
 
-    using Microsoft.Xna.Framework.Audio;
-
     using ScreenManagement;
     using Microsoft.Xna.Framework.Input;
     using Microsoft.Xna.Framework.Media;
@@ -46,14 +44,12 @@
 
         public override void Update(GameTime gameTime)
         {
-
-            
-          
-            //Controls5
+            //Controls
             KeyboardState keyboard = Keyboard.GetState();
 
             if (keyboard.IsKeyDown(Keys.Escape))
             {
+                MediaPlayer.Stop();
                 ScreenManager.Instance.Engine.Exit();
             }
             if (keyboard.IsKeyDown(Keys.Enter))
@@ -73,6 +69,7 @@
                 if (keyboard.IsKeyDown(Keys.P))
                 {
                     this.pause = true;
+                    MediaPlayer.Pause();
                 }
                 else
                 {
@@ -87,6 +84,7 @@
                 if (keyboard.IsKeyDown(Keys.Enter))
                 {
                     this.pause = false;
+                    MediaPlayer.Resume();
                 }
             }
         }

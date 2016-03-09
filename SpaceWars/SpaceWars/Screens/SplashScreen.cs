@@ -4,9 +4,11 @@
     using SpaceWars.GameObjects;
 
     using Microsoft.Xna.Framework.Input;
+    using Microsoft.Xna.Framework.Media;
 
     public class SplashScreen : GameScreen
     {
+        private Song backgroundMusic;
         Starfield Background = new Starfield();
         Image Image = new Image("startBackground");
         private int buttonDelay = 10;
@@ -15,7 +17,8 @@
         {
             Background.LoadContent(Content);
             Image.LoadConent(Content);
-
+            this.backgroundMusic = Content.Load<Song>("sounds/backgroundMusic");
+            MediaPlayer.Play(this.backgroundMusic);
             base.LoadContent(Content);
         }
 

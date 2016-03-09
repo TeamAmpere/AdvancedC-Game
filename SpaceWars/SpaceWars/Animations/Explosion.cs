@@ -22,13 +22,13 @@
         private int spriteWidth;
 
 
-        public Explosion(Texture2D texture, Vector2 position, float scale = 1.0f)
+        public Explosion(Texture2D texture, Vector2 position, float scale = 1.0f, int interval = 20)
         {
             this.Scale = scale;
             this.Texture = texture;
             this.Position = position;
             this.Timer = 0f;
-            this.Interval = 20f;
+            this.interval = interval;
             this.spriteWidth = texture.Width;
             this.spriteHeight = texture.Height;
             this.IsVisible = true;
@@ -49,7 +49,7 @@
         {
             
             this.Timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-
+            
             if (this.Timer > this.interval)
             {
                 this.currentFrame++;

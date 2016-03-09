@@ -4,7 +4,7 @@
 
     using SpaceWars.Core.Managers;
 
-    interface IBullet
+    public interface IBullet
     {
 
         void Intersect(IGameObject obj);

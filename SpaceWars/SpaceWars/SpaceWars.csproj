@@ -90,6 +90,7 @@
     <Compile Include="Models\Bonusses\HealthBonus.cs" />
     <Compile Include="Models\Bonusses\ShieldBonus.cs" />
     <Compile Include="Models\Bullets\AlienRocket.cs" />
+    <Compile Include="Models\Bullets\BossLaser.cs" />
     <Compile Include="Models\Contracts\IAsteroid.cs" />
     <Compile Include="Models\Contracts\IBonus.cs" />
     <Compile Include="Models\Contracts\IBullet.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Models\Contracts\IPlayer.cs" />
     <Compile Include="Models\Enemies\BigEnemy.cs" />
     <Compile Include="Models\Bullets\BigEnemyBullet.cs" />
+    <Compile Include="Models\Enemies\Bosses\Behaviours\PurpleAlienBehaviour.cs" />
     <Compile Include="Models\Enemies\Bosses\PurpleAlien.cs" />
     <Compile Include="Models\Enemies\Enemy.cs" />
     <Compile Include="Models\Bullets\EnemyBullet.cs" />

@@ -33,6 +33,18 @@
 
         }
 
+        public override void Intersect(IGameObject obj)
+        {
+            base.Intersect(obj);
+            if (obj.GetType() == typeof(Bullet))
+            {
+                this.NeedToRemove = true;
+                var bullet = (Bullet)obj;
+                Owner.RemoveObject(bullet);
+            }
+        }
+
+
         public override void OnGetEnemy(IGameObject obj)
         {
             if (obj.GetType() == typeof(Player))
