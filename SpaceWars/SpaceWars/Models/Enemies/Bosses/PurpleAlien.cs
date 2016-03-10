@@ -2,7 +2,6 @@
 {
     using System;
 
-    using Microsoft.Win32;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -19,7 +18,7 @@
         private const int RightCorner = 800 - 100; // Screen width - health bonus width
         private const int DownCorner = 950 - 279; // Screen height - health bonus height
         private const int LeftCorner = 0;
-        private const int InititHealth = 60;
+        private const int InititHealth = 100;
         private const int oneSecond = 1000000;
         private const long tenSeconds = 10000000000;
 
