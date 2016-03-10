@@ -1,8 +1,8 @@
 ﻿namespace SpaceWars.Models.Enemies.Bosses
 {
     using System;
-    using System.Runtime.CompilerServices;
 
+    using Microsoft.Win32;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -19,7 +19,9 @@
         private const int RightCorner = 800 - 100; // Screen width - health bonus width
         private const int DownCorner = 950 - 279; // Screen height - health bonus height
         private const int LeftCorner = 0;
-        private const int InititHealth = 10;
+        private const int InititHealth = 60;
+        private const int oneSecond = 1000000;
+        private const long tenSeconds = 10000000000;
 
         private static readonly Vector2 LEFT = new Vector2(-4, 0);
         private static readonly Vector2 RIGHT = new Vector2(4, 0);
@@ -32,10 +34,13 @@
         private Rectangle rectangle;
         private int angryCount = 80;
 
+        private TimeSpan timer;
+
         private BossLaser bossLaser;
 
         public PurpleAlien(int shootDelayConst, Vector2 playerPosition)
         {
+            this.timer = new TimeSpan(tenSeconds);
             Random rand = new Random();
             this.IsLaserLaunched = false;
             this.Position = new Vector2(rand.Next(LeftCorner, RightCorner), -50);
@@ -74,10 +79,6 @@
             {
                 int bulletX = (int)Position.X + 22; //22 because half of the texture width - bullet width
 
-                if (!this.IsLaserLaunched)
-                {
-                    //TODO: Make this boss shoot again.
-
                     var behaviour = new PurpleAlienBehaviour(this);
                     var bullet = behaviour.ManageBehaviour(this.Health);
                     this.Owner.AddObject(bullet);
@@ -85,8 +86,6 @@
                     {
                         this.bossLaser = (BossLaser)bullet;
                     }
-                }
-
 
                 this.shootDelay = this.ShootDelayConst;
             }
@@ -95,7 +94,6 @@
         public override void Think(GameTime gameTime)
         {
             GetAlienPosition = Position;
-
             this.rectangle = new Rectangle(50, 75, this.Health * 7, 20);
             this.Shoot();
             if (Player.GetPlayerPosition.X > this.Position.X)
@@ -107,10 +105,26 @@
                 this.Position += LEFT;
             }
 
-            if (this.Health < 50)
+            if (this.IsLaserLaunched)
             {
-                this.shootDelay = 0;
+
+                if (this.timer.Seconds == 0)
+                {
+                    this.IsLaserLaunched = false;
+                    this.timer = new TimeSpan(tenSeconds);
+                }
+
+                else
+                {
+                    this.timer -= new TimeSpan(oneSecond);
+                }
+
             }
+
+            //if (this.Health < 50)
+            //{
+            //    this.shootDelay += 20;
+            //}
         }
 
         public override void Intersect(IGameObject obj)

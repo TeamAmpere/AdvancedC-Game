@@ -66,7 +66,10 @@
                     Owner.Explosions.Add(new Explosion(
                     this.ExplosionTexture,
                     new Vector2(boss.Position.X, boss.Position.Y + 20), 20f, 50));
+                    this.explosionInstance.Volume = 1f;
+                    this.explosionInstance.Play();
                 }
+                
             }
 
             if (obj is Enemy && !(obj is PurpleAlien))

@@ -145,7 +145,6 @@
             this.Owner.RemoveObject(this);
             int score = this.Owner.scoreManager.TotalScore;
             Data.AddScore(score);
-            //TODO   when the screen is GameOver -> Show Score =>  Owner.ScoreManager.ScoringPoints;
             //End of the game
         }
 
@@ -276,7 +275,7 @@
                 {
                     this.dashes.Add(new Dash(this.Position, this.dashTexture));
                     this.Position += DashRight;
-                    this.dashDelay = 50;
+                    this.dashDelay = 25;
                 }
 
                 else
@@ -291,7 +290,7 @@
                 {
                     this.dashes.Add(new Dash(this.Position, this.dashTexture));
                     this.Position += DashLeft;
-                    this.dashDelay = 50;
+                    this.dashDelay = 25;
                 }
 
                 else
